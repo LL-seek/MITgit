@@ -1,5 +1,8 @@
 # The legacy tree is a byte-for-byte forensic baseline.  In particular,
 # main.cpp is GBK encoded, so Git must not rewrite its line endings or bytes.
 /MIT_Cheetah_DRV8323_5636/** -text
+/Migration/Baseline/Evidence/** -text
+/Migration/Baseline/source_inventory.csv -text
+/Migration/Baseline/source_inventory_summary.json -text
 
 *.pdf binary

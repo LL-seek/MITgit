@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "baselineDate": "2026-08-28",
+  "timezone": "Asia/Shanghai",
+  "stage": 0,
+  "stageStatus": "IN_PROGRESS_HARDWARE_EVIDENCE_REQUIRED",
+  "source": {
+    "directory": "MIT_Cheetah_DRV8323_5636",
+    "frozenCommit": "122d12ab8c7d3f71e03a5ffa2768257d09d0caa7",
+    "frozenTag": "legacy-source-baseline-20260828",
+    "projectSha256": "F1D4B054F087C2C230364D7DE5F2A13B318A5AAF098A2A9D310E1EF9612808B7",
+    "mainBeforeRepairSha256": "5423712DA6AF6691F3ABDA7E8E1FD4E09CFD86C3EF464AA36345718B53BEB0D1",
+    "mainAfterRepairSha256": "96259FD2D5EC0AC5F0384FCFEC46578DA6B1E59B030519BAEAC96256F86CCE18"
+  },
+  "inputs": {
+    "migrationGuideSha256AtFrozenCommit": "CC50227B5224B449FA36FAA3A2599A4305FB5D273C63D98C41BC21FAB5715727",
+    "schematicSha256": "189DC250F3F6BE18A809168C93E33568D962477F0018F0A1744B9805557A59C1",
+    "drv8323rDatasheetSha256": "DD8386C972E8D0A57278E432DA6E9D8B2BC2F73768DD97EAC69594DA20D24208"
+  },
+  "toolchain": {
+    "uv4": "5.43.1.0",
+    "mdkArm": "5.43.0.0",
+    "armCompiler": "5.06 update 5 (build 528)",
+    "devicePack": "Keil::STM32F4xx_DFP@3.1.1"
+  },
+  "inventory": {
+    "items": 1077,
+    "files": 1044,
+    "directories": 33,
+    "unclassified": 0,
+    "csvSha256": "D85D86E32490DC5609814842F1C318043505927336288779A9D3C19744999F3D"
+  },
+  "reproducibleBuild": {
+    "fullRebuilds": 2,
+    "errorsPerRun": 0,
+    "warningsPerRun": 20,
+    "mapIdentical": true,
+    "loadableBinaryIdentical": true,
+    "binSha256": "946B47725B5DC95D66F9757D02B1226710638D839D99E7211CBA75A500500046"
+  },
+  "openGate": [
+    "Confirm populated encoder variants/BOM on the representative board.",
+    "Measure PWM phase mapping/polarity/frequency and current-channel signs.",
+    "Measure ENABLE reset level and enforce DRV8323R tREADY before SPI.",
+    "Measure fast-loop WCET/jitter and ADC trigger-to-data timing."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "comparisonDate": "2026-08-28T02:27:00+08:00",
+  "runs": [
+    {
+      "name": "legacy_rebuild_01",
+      "errors": 0,
+      "warnings": 20,
+      "durationSeconds": 43.482,
+      "mapSha256": "C5BC73F722B4AD18ED56ACE55809B4D0E4ED5A043B174CB1557B1C09351AD274",
+      "axfSha256": "001980AE23276E468C1007F35C5AFCA02A9141AB0EFFB614D6C43E53BF4B775A",
+      "binSha256": "946B47725B5DC95D66F9757D02B1226710638D839D99E7211CBA75A500500046"
+    },
+    {
+      "name": "legacy_rebuild_02",
+      "errors": 0,
+      "warnings": 20,
+      "durationSeconds": 36.306,
+      "mapSha256": "C5BC73F722B4AD18ED56ACE55809B4D0E4ED5A043B174CB1557B1C09351AD274",
+      "axfSha256": "EA1707B7422A2D0B94CEC40B6433CB9C07E0A022886494418F788A0C31318233",
+      "binSha256": "946B47725B5DC95D66F9757D02B1226710638D839D99E7211CBA75A500500046"
+    }
+  ],
+  "mapIdentical": true,
+  "loadableBinaryIdentical": true,
+  "axfIdentical": false,
+  "axfDifferenceDisposition": "Non-load/debug metadata differs; loadable BIN and map are identical.",
+  "image": {
+    "codeBytes": 84244,
+    "roDataBytes": 8540,
+    "rwDataBytes": 456,
+    "ziDataBytes": 12732,
+    "totalRoBytes": 92784,
+    "totalRwBytes": 13188,
+    "totalRomBytes": 92920,
+    "entryPoint": "0x080001C5",
+    "resetHandler": "0x08000359",
+    "tim1UpdateHandler": "0x080073E1",
+    "tim1UpdateHandlerSymbolBytes": 394,
+    "tim1UpdateHandlerSectionBytes": 472
+  }
+}

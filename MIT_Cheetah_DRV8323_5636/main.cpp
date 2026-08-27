@@ -62,7 +62,7 @@ void onMsgReceived() {                          //CAN中断回调函数
     if((rxMsg.id == CAN_ID)){                   //上位机发送CAN帧->CAN收发器收到总线信号->STM32 CAN1外设接收到一帧->CAN过滤器判断：ID是否等于 CAN_ID->匹配成功，放进 CAN RX FIFO0->触发 CAN1_RX0 中断->进入接收回调函数
         controller.timeout = 0;  
         if(((rxMsg.data[0]==0xFF) & (rxMsg.data[1]==0xFF) & (rxMsg.data[2]==0xFF) & (rxMsg.data[3]==0xFF) & (rxMsg.data[4]==0xFF) & (rxMsg.data[5]==0xFF) & (rxMsg.data[6]==0xFF) & (rxMsg.data[7]==0xFC))){
-            state = MOTOR_MODE；         
+            state = MOTOR_MODE;         
             }
         else if(((rxMsg.data[0]==0xFF) & (rxMsg.data[1]==0xFF) & (rxMsg.data[2]==0xFF) & (rxMsg.data[3]==0xFF) * (rxMsg.data[4]==0xFF) & (rxMsg.data[5]==0xFF) & (rxMsg.data[6]==0xFF) & (rxMsg.data[7]==0xFD))){
             state = REST_MODE;

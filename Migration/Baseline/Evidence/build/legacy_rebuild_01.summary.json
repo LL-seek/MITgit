@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "runName": "legacy_rebuild_01",
+  "mode": "rebuild",
+  "startedAt": "2026-08-28T02:25:30.5377729+08:00",
+  "finishedAt": "2026-08-28T02:26:14.0200382+08:00",
+  "durationSeconds": 43.482,
+  "uv4Path": "D:\\Keil5\\UV4\\UV4.exe",
+  "uv4FileVersion": "5.43.1.0",
+  "fromElfPath": "D:\\Keil5\\ARM\\ARMCC\\bin\\fromelf.exe",
+  "project": "C:\\Users\\l3098\\OneDrive\\Desktop\\MITgit\\MIT_Cheetah_DRV8323_5636\\Hobbyking_Cheetah_Compact_DRV8323.uvprojx",
+  "target": "Hobbyking_Cheetah_Compact_DRV8323",
+  "command": "\"D:\\Keil5\\UV4\\UV4.exe\" -r C:\\Users\\l3098\\OneDrive\\Desktop\\MITgit\\MIT_Cheetah_DRV8323_5636\\Hobbyking_Cheetah_Compact_DRV8323.uvprojx -t Hobbyking_Cheetah_Compact_DRV8323 -j0 -o C:\\Users\\l3098\\OneDrive\\Desktop\\MITgit\\Migration\\Baseline\\Evidence\\build\\legacy_rebuild_01.keil.log",
+  "exitCode": 1,
+  "errors": 0,
+  "warnings": 20,
+  "commandLogSha256": "F6A56EACA183AAE0F654FFE877784DFF6DAE201FF6A2929F92688E3130F4005E",
+  "artifacts": [
+    {
+      "name": "legacy_rebuild_01.map",
+      "bytes": 2363505,
+      "sha256": "C5BC73F722B4AD18ED56ACE55809B4D0E4ED5A043B174CB1557B1C09351AD274",
+      "sourceLastWriteTime": "2026-08-28T02:26:13.3733881+08:00"
+    },
+    {
+      "name": "legacy_rebuild_01.axf",
+      "bytes": 4888372,
+      "sha256": "001980AE23276E468C1007F35C5AFCA02A9141AB0EFFB614D6C43E53BF4B775A",
+      "sourceLastWriteTime": "2026-08-28T02:26:13.3413795+08:00"
+    },
+    {
+      "name": "legacy_rebuild_01.build_log.htm",
+      "bytes": 11184,
+      "sha256": "9782EF2B3CBE3D2DE43150745B3215D804C7B576D02A4F7DE0C0E55AC07B23D0",
+      "sourceLastWriteTime": "2026-08-28T02:26:13.8091358+08:00"
+    },
+    {
+      "name": "legacy_rebuild_01.linker.htm",
+      "bytes": 716681,
+      "sha256": "E7BBE5BFB139FAD9391A1750B7C015AA54A275FBA744FCCB9EA22C9AB6DE0276",
+      "sourceLastWriteTime": "2026-08-28T02:26:13.3353779+08:00"
+    },
+    {
+      "name": "legacy_rebuild_01.bin",
+      "bytes": 92920,
+      "sha256": "946B47725B5DC95D66F9757D02B1226710638D839D99E7211CBA75A500500046",
+      "sourceLastWriteTime": "2026-08-28T02:28:14.2232490+08:00"
+    }
+  ]
+}

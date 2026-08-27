@@ -270,7 +270,7 @@
 
 | 阶段 | 名称 | 状态 | 开始日期 | 完成日期 | 负责人 | 验收证据 |
 |---:|---|---|---|---|---|---|
-| 0 | 基线 | 未开始 |  |  |  |  |
+| 0 | 基线 | 进行中（等待实物证据） | 2026-08-28 |  | FW；硬件复核 HW/QA（关闭前实名） | [阶段 0 基线索引](Migration/Baseline/README.md) |
 | 1 | Cube 骨架 | 未开始 |  |  |  |  |
 | 2 | 公共纯 C | 未开始 |  |  |  |  |
 | 3 | DRV8323 | 未开始 |  |  |  |  |
@@ -292,42 +292,51 @@
 输入：当前 Keil/mbed C++ 工程、原理图、DRV8323 数据手册、编码器资料、实物板。  
 输出：冻结源码、可复现构建、资源合同、协议合同、时序基线、缺陷决策表。
 
-- [ ] **0.1 冻结源码**
+- [x] **0.1 冻结源码**
   - 实施：复制或标记当前源项目版本；记录文件清单、日期、编译器版本和工程文件。
   - 完成：旧源码后续只作为参考；任何旧源码变化都有变更记录。
+  - 证据：Git 提交 `122d12ab8c7d3f71e03a5ffa2768257d09d0caa7`、标签 `legacy-source-baseline-20260828`、[源码基线与逐项清单](Migration/Baseline/SOURCE_BASELINE.md)。
 
-- [ ] **0.2 恢复旧工程编译**
+- [x] **0.2 恢复旧工程编译**
   - 实施：先记录再修复 main.cpp 当前全角分号等阻断构建的问题；保存完整编译日志和 map 文件。
   - 完成：旧工程能够重复编译；记录代码大小、RAM、入口和中断符号。
+  - 证据：两次全量重建均 0 errors / 20 warnings，BIN 与 map 各自完全一致；见[构建基线](Migration/Baseline/BUILD_BASELINE.md)。
 
-- [ ] **0.3 文件分类**
+- [x] **0.3 文件分类**
   - 实施：给每个旧文件标记“迁移、HAL替代、吸收、暂缓、废弃、未使用待确认”。
   - 完成：源码追踪表中没有“未分类”的文件和目录。
+  - 证据：[逐项 CSV](Migration/Baseline/source_inventory.csv)包含 1044 个文件和 33 个目录，未分类为 0。
 
 - [ ] **0.4 硬件资源表**
   - 实施：逐项复核第 4 节中的 MCU、引脚、外设、通道、片选、使能、Flash 地址。
   - 完成：资源表与原理图、实物和旧代码三方一致；冲突有决策记录。
+  - 当前：原理图/源码静态交叉核对已完成；实装编码器、相/电流映射、ENABLE 复位电平、PWM/ADC/ISR 波形和板卡版本仍待实物证据。见[硬件资源合同](Migration/Baseline/HARDWARE_RESOURCE_CONTRACT.md)。
 
-- [ ] **0.5 协议合同**
+- [x] **0.5 协议合同**
   - 实施：冻结普通 MIT 命令、反馈帧、特殊帧、CAN ID、主站 ID 和超时单位。
   - 完成：为每种帧保存至少一个十六进制输入和预期结果。
+  - 证据：[CAN/MIT 协议合同](Migration/Baseline/PROTOCOL_CONTRACT.md)和[参数/Flash 兼容合同](Migration/Baseline/PARAMETER_CONTRACT.md)。
 
-- [ ] **0.6 时序基线**
+- [x] **0.6 时序基线**
   - 实施：记录 PWM、TIM1 Update、ADC、SPI1、SPI3、CAN 和快速 ISR 的实际时序。
   - 完成：至少有示波器/逻辑分析仪或旧工程寄存器推导结果；不确定项明确标记。
+  - 证据：[寄存器/源码推断时序基线](Migration/Baseline/TIMING_BASELINE.md)；实际 WCET/波形仍列为 0.4 硬件复核项。
 
-- [ ] **0.7 缺陷决策表**
+- [x] **0.7 缺陷决策表**
   - 实施：逐项判断旧代码疑点是“兼容、修复、延后或需要实测”。
   - 完成：本文第 9.2 节所有已知疑点都有负责人、结论和验证方式。
+  - 证据：[D-001～D-029 缺陷决策台账](Migration/Baseline/DEFECT_DECISIONS.md)。
 
 ### 阶段 0 验收门
 
-- [ ] 旧工程能重复构建。
-- [ ] 所有源文件均已分类。
+- [x] 旧工程能重复构建。
+- [x] 所有源文件均已分类。
 - [ ] 引脚、外设和 Flash 资源无未解决冲突。
-- [ ] CAN 和参数兼容合同已冻结。
-- [ ] 关键时序有基线。
-- [ ] 旧代码疑点不会在迁移中被无意复制或无记录改变。
+- [x] CAN 和参数兼容合同已冻结。
+- [x] 关键时序有基线。
+- [x] 旧代码疑点不会在迁移中被无意复制或无记录改变。
+
+阶段 0 当前结论（2026-08-28）：静态基线完成；总门禁因 0.4 的实物/BOM/仪器证据保持开启，不启动阶段 1。
 
 ---
 
@@ -944,26 +953,26 @@
 
 | 旧索引 | 字段 | 单位/含义 | 新字段 | 状态 |
 |---:|---|---|---|---|
-| 0 | E_OFFSET | 电角度偏置 |  | 未映射 |
-| 1 | M_OFFSET | 机械零位偏置 |  | 未映射 |
-| 2 | I_BW | 电流环带宽 |  | 未映射 |
-| 3 | I_MAX | 最大电流 |  | 未映射 |
-| 4 | THETA_MIN | 最小位置 |  | 未映射 |
-| 5 | THETA_MAX | 最大位置 |  | 未映射 |
-| 6 | I_FW_MAX | 最大弱磁电流 |  | 未映射 |
+| 0 | E_OFFSET | 电角度偏置 | `electrical_offset_rad` | 合同已冻结，实现未开始 |
+| 1 | M_OFFSET | 机械零位偏置 | `mechanical_zero_rad` | 合同已冻结，实现未开始 |
+| 2 | I_BW | 电流环带宽 | `current_bandwidth_hz` | 合同已冻结，实现未开始 |
+| 3 | I_MAX | 最大电流 | `current_limit_a` | 合同已冻结，实现未开始 |
+| 4 | THETA_MIN | 最小位置 | `position_min_rad`（导入保留，需求待确认） | 合同已冻结，实现未开始 |
+| 5 | THETA_MAX | 最大位置 | `position_max_rad`（导入保留，需求待确认） | 合同已冻结，实现未开始 |
+| 6 | I_FW_MAX | 最大弱磁电流 | `field_weakening_current_limit_a` | 合同已冻结，实现未开始 |
 
 ### 整数参数
 
 | 旧索引 | 字段 | 含义 | 新字段 | 状态 |
 |---:|---|---|---|---|
-| 0 | PHASE_ORDER | 相序 |  | 未映射 |
-| 1 | CAN_ID | 电机CAN ID |  | 未映射 |
-| 2 | CAN_MASTER | 主站ID |  | 未映射 |
-| 3 | CAN_TIMEOUT | 命令超时，旧值按控制周期计数 |  | 未映射 |
-| 4～5 | 待确认 | 保留或未使用 |  | 未确认 |
-| 6 | RAW_OFFSET | 编码器1原始偏置 |  | 未映射 |
-| 7 | RAW2_OFFSET | 编码器2原始偏置 |  | 未映射 |
-| 8～135 | LUT[0～127] | 编码器校正表 |  | 未映射 |
+| 0 | PHASE_ORDER | 相序 | `phase_order` | 合同已冻结，实现未开始 |
+| 1 | CAN_ID | 电机CAN ID | `can_node_id` | 合同已冻结，实现未开始 |
+| 2 | CAN_MASTER | 主站ID | `can_master_id` | 合同已冻结，实现未开始 |
+| 3 | CAN_TIMEOUT | 命令超时，旧值按控制周期计数 | `can_timeout_cycles` | 合同已冻结，实现未开始 |
+| 4～5 | 待确认 | 保留或未使用 | `reserved_int[0..1]`（opaque） | 合同已冻结，实现未开始 |
+| 6 | RAW_OFFSET | 编码器1原始偏置 | `encoder_raw_offset[0]` | 合同已冻结，实现未开始 |
+| 7 | RAW2_OFFSET | 编码器2原始偏置 | `encoder_raw_offset[1]` | 合同已冻结，实现未开始 |
+| 8～135 | LUT[0～127] | 编码器校正表 | `encoder_lut[128]` | 合同已冻结，实现未开始 |
 
 ---
 
@@ -972,6 +981,8 @@
 ## 9.1 旧源码覆盖表
 
 迁移过程中不得删除行，只修改目标模块、状态和证据。
+
+阶段 0 的逐文件/逐目录分类以 [source_inventory.csv](Migration/Baseline/source_inventory.csv) 为权威清单（1044 个文件、33 个目录、未分类 0）；下表继续作为后续阶段的模块级进度摘要。
 
 | 旧源码/目录 | 当前作用 | 目标模块或处理方式 | 阶段 | 状态 | 证据/备注 |
 |---|---|---|---:|---|---|
@@ -996,32 +1007,51 @@
 
 ## 9.2 已知问题与迁移决策
 
-| ID | 旧代码现象 | 风险 | 默认处理建议 | 最终决策 | 验证证据 |
+完整风险、阶段、通过条件和阻断关系见[阶段 0 缺陷决策台账](Migration/Baseline/DEFECT_DECISIONS.md)。下表是指南内的门禁索引；“已决策”表示方向冻结，不表示目标实现已经完成。
+
+| ID | 旧现象/风险 | 最终决策 | 主责 | 状态 | 验证证据 |
 |---|---|---|---|---|---|
-| D-001 | main.cpp存在全角分号导致构建失败 | 无法建立旧基线 | 记录后修复旧基线 | 待定 |  |
-| D-002 | hw_setup中TIM1 CCER使用按位取反后OR | 可能误置多个寄存器位 | 不复制，Cube中重建并测波形 | 待定 |  |
-| D-003 | DRV FSR2读命令地址编码疑似错误 | 故障读取错误 | 用通用寄存器函数修复 | 待定 |  |
-| D-004 | FOC中dtc小于零疑似比较指针而非指向值 | 死区补偿方向错误 | 修复并加单元测试 | 待定 |  |
-| D-005 | FOC使用abs处理float | 浮点截断/结果错误 | 改为fabsf | 待定 |  |
-| D-006 | 控制复位duty表达式疑似得到25%而非50% | 启动时异常矢量 | 对照实测后定义安全值 | 待定 |  |
-| D-007 | 旧ADC配置疑似45 MHz | 超出官方ADC规格 | 新工程先用22.5 MHz并重标定 | 待定 |  |
-| D-008 | 40 kHz ISR内存在菜单、标定、打印和等待 | 严重超周期 | 改为事件和非阻塞状态机 | 待定 |  |
-| D-009 | 旧链接布局未保护0x08040000参数区 | 程序覆盖参数 | 程序区限制为前256 KiB | 待定 |  |
-| D-010 | 标定存在约43.5 KiB动态分配和大缓冲 | 堆碎片/失败/栈风险 | 静态工作区或分块计算 | 待定 |  |
-| D-011 | ADC注释、相名和实际通道存在不一致 | 电流相序错误 | 原理图+注入电流实测确认 | 待定 |  |
-| D-012 | SPI/ADC时序依赖两次编码器读取的隐式等待 | ADC可能未完成或采样不确定 | 显式触发和完成协议 | 待定 |  |
-| D-013 | math_ops重定义标准数学函数 | 链接/语义冲突 | 使用标准函数并重命名自定义项 | 待定 |  |
-| D-014 | ABZ编码器路径当前疑似未使用 | 迁移范围膨胀或遗漏需求 | 产品需求确认后迁移/暂缓 | 待定 |  |
+| D-001 | main.cpp 全角分号阻断构建 | 受控单字节修复 | FW | 已修复/验证 | 两次 full rebuild，BIN/map 一致 |
+| D-002 | TIM1 CCER 对取反掩码执行 OR | 不复制，Cube 明确配置并测波形 | FW | 已决策 | 寄存器快照 + HW-04 |
+| D-003 | DRV FSR2 读地址编码错误 | 统一通用寄存器编码 | FW | 已决策 | 单测 + SPI/故障注入 |
+| D-004 | dtc 疑似比较指针而非值 | 修复值语义 | FW | 已决策 | 正负/边界单测 |
+| D-005 | abs 处理 float | 改用 fabsf | FW | 已决策 | 小数输入单测 |
+| D-006 | reset compare 疑似 25% 而非中点 | 默认禁输出；中性波形实测定义 | FW+HW | 待实测 | HW-04 |
+| D-007 | ADC 推断 45 MHz | 改 22.5 MHz 并重标定 | FW | 已决策 | ADC 寄存器/采样质量 |
+| D-008 | 40 kHz ISR 有等待、打印和长动作 | 事件化、固定有界 ISR | FW | 已决策 | DWT/scope WCET |
+| D-009 | linker 未保护参数区 | IROM 限制为前 256 KiB | FW | 已决策 | map/构建负测试 |
+| D-010 | 标定约 43.5 KiB 动态工作区 | 静态/分块，禁运行期 heap | FW | 已决策 | RAM/stack/重复标定 |
+| D-011 | ADC 网名、注释和控制相不一致 | 物理命名 + 电流注入建立映射 | HW+FW | 硬件阻塞 | HW-01/HW-05 |
+| D-012 | ADC 完成依赖两次 SPI 隐式延时 | TIM1 trigger + DMA/EOC snapshot | FW | 已决策 | trigger-to-consume 波形 |
+| D-013 | 重定义标准数学函数 | 标准库/项目命名分离 | FW | 已决策 | 符号扫描 + 单测 |
+| D-014 | ABZ 路径需求不明且 API 已废弃 | 首版隔离，需求批准后迁移 | PM+FW | 暂缓 | map 无 ABZ 符号 |
+| D-015 | 旧 U/V/W 与 DRV C/B/A 交叉 | BSP 用物理名，实测逻辑相矩阵 | HW+FW | 硬件阻塞 | HW-01/HW-04 |
+| D-016 | 编码器装配可能是 AS5047P/MA700/MA730 | 识别 BOM/实物后批准驱动 | HW | 硬件阻塞 | HW-00/HW-06 |
+| D-017 | DRV ENABLE 后 100 µs 即 SPI，小于 tREADY max | 首次 SPI 前至少 1 ms | FW | 已决策 | ENABLE/nSCS 波形 |
+| D-018 | ENABLE 无可见下拉且 GPIO 初始化晚 | 最早期拉低 + 硬件下拉复核 | HW+FW | 硬件阻塞 | HW-02 |
+| D-019 | Flash sector 5 错映射为 sector 6 | 新 HAL 使用绝对范围白名单 | FW | 已决策 | 扇区边界负测试 |
+| D-020 | MOTOR 中可能擦写 Flash | 安全保存状态机 + A/B/回读 | FW | 已决策 | MOTOR Flash 计数=0 + 掉电测试 |
+| D-021 | CAN 不验 DLC/帧型且非法帧可喂狗 | 保持外部协议、增加 fail-closed 校验 | FW | 已决策 | 协议向量/fuzz/timeout |
+| D-022 | 参数无版本/CRC且校验错误 | typed 参数 + 保守旧导入 + A/B CRC | FW | 已决策 | 损坏/半写/掉电用例 |
+| D-023 | PWM Mode1+反 duty 与候选 Mode2 等价性未知 | 冻结外部波形，实测后选配置 | FW+HW | 硬件阻塞 | HW-04 |
+| D-024 | CAN ISR 内打印、解包、切状态和发帧 | ISR 只投递固定队列 | FW | 已决策 | 洪泛/队列/WCET |
+| D-025 | 原理图无日期/Rev且无 BOM | 建立板卡到设计资料证据链 | HW+PM | 硬件阻塞 | HW-00 签名记录 |
+| D-026 | nFAULT 到 MCU 未确认且 FSR2 读取有错 | 连续性确认；定义 SPI/EXTI 故障策略 | HW+FW | 硬件阻塞 | HW-01 + 故障注入 |
+| D-027 | 旧 full build 有 20 warnings | 旧基线记录；目标 Release 清零未批准警告 | FW | 已决策 | CI/警告清单 |
+| D-028 | C++ 全局构造在 main 前触碰外设/heap | 显式 C 启动顺序，禁全局动态构造 | FW | 已决策 | 启动序列 + map/波形 |
+| D-029 | ENABLE 还连 INLB/INLC，3×PWM strap 不清 | PCB/模式真值表/栅极实测后确认 | HW | 硬件阻塞 | HW-01/HW-04 |
 
 ## 9.3 接口冻结表
 
 | 接口 | 生产者 | 消费者 | 版本/日期 | 状态 | 备注 |
 |---|---|---|---|---|---|
+| CanWireProtocol | CAN host/Protocol | Protocol/CAN host | legacy-can-contract/2026-08-28 | 已冻结 | 普通/反馈/特殊帧、ID、DLC、timeout 与十六进制向量 |
+| LegacyParameterImage | Legacy Storage | Storage importer/offline tool | legacy-parameter-contract/2026-08-28 | 已冻结 | Sector 6 前 320 words，小端，保守导入 |
 | AdcSnapshot | MotorHW | Control/App |  | 未冻结 |  |
 | PositionSnapshot | Device/Position | Control/App |  | 未冻结 |  |
 | FocCommand | Protocol/App | Control |  | 未冻结 |  |
 | FocOutput | Control | MotorHW/App |  | 未冻结 |  |
-| MotorParameters | Storage/App | Control/Position/Protocol |  | 未冻结 |  |
+| MotorParameters | Storage/App | Control/Position/Protocol | legacy-parameter-contract/2026-08-28 | 旧导入/兼容合同已冻结 | C 接口与新记录结构在阶段 2/8 冻结 |
 | DrvFault | Device/DRV8323 | App |  | 未冻结 |  |
 | AppEvent | Protocol/Device/ISR | App |  | 未冻结 |  |
 | FaultSnapshot | App/Control | Diagnostic |  | 未冻结 |  |
@@ -1034,6 +1064,8 @@
 
 | 测试ID | 日期 | 对应小节 | 固件版本 | 供电/限流 | 负载条件 | 测试方法 | 结果 | 证据路径 | 结论 |
 |---|---|---|---|---|---|---|---|---|---|
+| BLD-00 | 2026-08-28 | 0.2 | D-001 修复后旧基线 | N/A | N/A | Keil/ARMCC 连续两次 `-r` 全量重建并比较 map/BIN | 两次均 0 errors / 20 warnings；map 与 BIN 各自 SHA-256 相同 | `Migration/Baseline/Evidence/build` | 旧构建可重复 |
+| STATIC-00 | 2026-08-28 | 0.1/0.3/0.5/0.6/0.7 | `122d12a` + 阶段 0 文档 | N/A | N/A | Git 冻结、全树 SHA-256 分类、源码/原理图/数据手册静态交叉核对 | 文件未分类 0；协议/参数/时序/缺陷合同已落盘 | `Migration/Baseline` | 静态基线完成，硬件门禁仍开 |
 | T-001 |  |  |  |  |  |  |  |  |  |
 
 ## 10.1 带电测试前检查
