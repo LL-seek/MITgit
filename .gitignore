@@ -1,0 +1,14 @@
+# Keil generated outputs (the Stage 0 evidence copies are stored outside BUILD/).
+/MIT_Cheetah_DRV8323_5636/BUILD/
+
+# Keil per-user/debugger state and logs.
+/MIT_Cheetah_DRV8323_5636/*.uvguix.*
+/MIT_Cheetah_DRV8323_5636/JLinkLog.txt
+
+# Local PDF render scratch space.
+/tmp/
+
+# PowerShell/editor transients.
+*.tmp
+*.bak
+*~
