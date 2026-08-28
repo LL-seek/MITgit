@@ -1,0 +1,1 @@
+mit_cheetah_cube_hal_c\startup_stm32f446xx.o: startup_stm32f446xx.s
