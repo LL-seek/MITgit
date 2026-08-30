@@ -30,7 +30,9 @@ mit_cheetah_cube_hal_c\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal
 mit_cheetah_cube_hal_c\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 mit_cheetah_cube_hal_c\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 mit_cheetah_cube_hal_c\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+mit_cheetah_cube_hal_c\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 mit_cheetah_cube_hal_c\main.o: ../Core/Inc/tim.h
+mit_cheetah_cube_hal_c\main.o: ../Core/Inc/usart.h
 mit_cheetah_cube_hal_c\main.o: ../Core/Inc/gpio.h
 mit_cheetah_cube_hal_c\main.o: ../User/BSP/bsp_safe_gpio.h
 mit_cheetah_cube_hal_c\main.o: ../User/BSP/bsp_time.h

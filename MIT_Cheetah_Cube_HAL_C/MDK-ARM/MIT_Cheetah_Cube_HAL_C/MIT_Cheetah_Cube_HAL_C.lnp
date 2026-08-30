@@ -3,6 +3,7 @@
 "mit_cheetah_cube_hal_c\main.o"
 "mit_cheetah_cube_hal_c\gpio.o"
 "mit_cheetah_cube_hal_c\tim.o"
+"mit_cheetah_cube_hal_c\usart.o"
 "mit_cheetah_cube_hal_c\stm32f4xx_it.o"
 "mit_cheetah_cube_hal_c\stm32f4xx_hal_msp.o"
 "mit_cheetah_cube_hal_c\stm32f4xx_hal_tim.o"
@@ -20,9 +21,11 @@
 "mit_cheetah_cube_hal_c\stm32f4xx_hal_cortex.o"
 "mit_cheetah_cube_hal_c\stm32f4xx_hal.o"
 "mit_cheetah_cube_hal_c\stm32f4xx_hal_exti.o"
+"mit_cheetah_cube_hal_c\stm32f4xx_hal_uart.o"
 "mit_cheetah_cube_hal_c\system_stm32f4xx.o"
 "mit_cheetah_cube_hal_c\bsp_safe_gpio.o"
 "mit_cheetah_cube_hal_c\bsp_time.o"
+"mit_cheetah_cube_hal_c\bsp_debug_uart.o"
 --strict --scatter "MIT_Cheetah_Cube_HAL_C\MIT_Cheetah_Cube_HAL_C.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
