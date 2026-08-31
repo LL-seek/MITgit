@@ -26,6 +26,8 @@
 /* USER CODE BEGIN Includes */
 #include "bsp_safe_gpio.h"
 #include "bsp_time.h"
+#include "bsp_emergency_stop.h"
+#include "bsp_debug_uart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,6 +98,7 @@ BSP_SafeGpioEarlyInit();
   {
      Error_Handler();
   }
+			(void)BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -175,7 +178,7 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
-	BSP_SafeGpioEarlyInit();
+	  BSP_EmergencyStop(BSP_ERROR_HAL);
   while (1)
   {
   }
