@@ -809,6 +809,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\Common\motor_types.c</FilePath>
             </File>
+            <File>
+              <FileName>math_ops.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Common\math_ops.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
