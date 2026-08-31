@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F446xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/BSP</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/BSP;..\User\Common;..\User\config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -808,6 +808,21 @@
               <FileName>motor_types.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\Common\motor_types.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>User_config</GroupName>
+          <Files>
+            <File>
+              <FileName>hw_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\config\hw_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\config\motor_config.c</FilePath>
             </File>
           </Files>
         </Group>
