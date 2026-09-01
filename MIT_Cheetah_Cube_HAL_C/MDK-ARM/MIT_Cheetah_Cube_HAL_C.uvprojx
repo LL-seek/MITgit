@@ -852,6 +852,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>User_Protocol</GroupName>
+          <Files>
+            <File>
+              <FileName>CAN_com.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Protocol\CAN_com.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
