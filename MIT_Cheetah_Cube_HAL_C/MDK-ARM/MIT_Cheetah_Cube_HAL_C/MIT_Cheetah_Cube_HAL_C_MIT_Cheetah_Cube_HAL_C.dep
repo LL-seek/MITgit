@@ -888,5 +888,10 @@ F (..\User\config\hw_config.c)(0x6A958DF6)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3
 I (..\User\config\hw_config.h)(0x6A958DF6)
 F (..\User\config\motor_config.c)(0x6A959077)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ..\User\Common -I ..\User\config -I ..\User\Control-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\motor_config.o --omf_browse mit_cheetah_cube_hal_c\motor_config.crf --depend mit_cheetah_cube_hal_c\motor_config.d)
 I (..\User\config\motor_config.h)(0x6A959077)
-F (..\User\Control\foc.c)(0x6A96E266)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ..\User\Common -I ..\User\config -I ..\User\Control-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\foc.o --omf_browse mit_cheetah_cube_hal_c\foc.crf --depend mit_cheetah_cube_hal_c\foc.d)
+F (..\User\Control\foc.c)(0x6A96FB1C)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ..\User\Common -I ..\User\config -I ..\User\Control-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\foc.o --omf_browse mit_cheetah_cube_hal_c\foc.crf --depend mit_cheetah_cube_hal_c\foc.d)
 I (..\User\Control\foc.h)(0x6A96E266)
+I (D:\Keil5\ARM\ARMCC\include\math.h)(0x588B8344)
+I (..\User\Common\FastMath.h)(0x6A96624B)
+I (..\User\config\hw_config.h)(0x6A958DF6)
+I (..\User\Common\math_ops.h)(0x6A959C22)
+I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
