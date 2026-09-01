@@ -4,6 +4,7 @@
 
 
 
+
 float fmaxf3(float x, float y, float z)                         //·µ»ØÈı¸ö¸¡µãÊıÖĞµÄ×î´óÖµ
 {
     return fmaxf(fmaxf(x, y), z);                               //ÏÈ±È½ÏxºÍy£¬ÔÙ½«½Ï´óÖµÓëz±È½Ï
@@ -24,7 +25,6 @@ void limit(float *x, float min, float max)                      //½«*xÏŞÖÆÔÚ[min
 
 
 
-
 void limit_norm(float *x, float *y, float limit)                  //ÏŞÖÆ¶şÎ¬ÏòÁ¿(x, y)µÄ×î´óÄ£³¤
 {
     float norm = sqrtf((*x) * (*x) + (*y) * (*y));                //¼ÆËãÏòÁ¿Ä£³¤sqrt(x2+y2)
@@ -40,7 +40,7 @@ void limit_norm(float *x, float *y, float limit)                  //ÏŞÖÆ¶şÎ¬ÏòÁ¿
 
 
 
-uint32_t float_to_uint(float x,float x_min,float x_max,uint8_t bits)                            //½«¸¡µãÊı´Ó[x_min,x_max]Ó³Éäµ½[0,2^bits-1]
+uint32_t float_to_uint(float x,float x_min,float x_max,uint8_t bits)                              //½«¸¡µãÊı´Ó[x_min,x_max]Ó³Éäµ½[0,2^bits-1]
 {
     float span = x_max - x_min;                                   //¼ÆËã¸¡µãÎïÀíÁ¿µÄÍêÕû·¶Î§
     uint32_t max_int = (1UL << bits) - 1UL;                       //¼ÆËãÖ¸¶¨Î»ÊıÄÜ¹»±íÊ¾µÄ×î´óÎŞ·ûºÅÕûÊı
@@ -49,8 +49,7 @@ uint32_t float_to_uint(float x,float x_min,float x_max,uint8_t bits)            
 }
 
 
-
-float uint_to_float(uint32_t x_int, float x_min,float x_max,uint8_t bits)                      //½«ÕûÊı´Ó[0,2^bits-1]»¹Ô­µ½[x_min,x_max]
+float uint_to_float(uint32_t x_int,float x_min,float x_max,uint8_t bits)                                 //½«ÕûÊı´Ó[0,2^bits-1]»¹Ô­µ½[x_min,x_max]
 {
     float span = x_max - x_min;                                   //¼ÆËã¸¡µãÎïÀíÁ¿µÄÍêÕû·¶Î§
     uint32_t max_int = (1UL << bits) - 1UL;                       //¼ÆËãÖ¸¶¨Î»ÊıÄÜ¹»±íÊ¾µÄ×î´óÎŞ·ûºÅÕûÊı
@@ -60,7 +59,7 @@ float uint_to_float(uint32_t x_int, float x_min,float x_max,uint8_t bits)       
 
 
 
-float normalize_angle_0_2pi(float angle_rad)                     //½«ÊäÈë½Ç¶È¹éÒ»»¯µ½[0, 2¦Ğ)£¬rad
+float normalize_angle_0_2pi(float angle_rad)                      //½«ÊäÈë½Ç¶È¹éÒ»»¯µ½[0, 2¦Ğ)£¬µ¥Î»rad
 {
     const float two_pi = 2.0f * PI;                               //¼ÆËãÒ»ÕûÈ¦¶ÔÓ¦µÄ½Ç¶È2¦Ğ
     float normalized = fmodf(angle_rad, two_pi);                  //¼ÆËãangle_rad³ıÒÔ2¦ĞºóµÄ¸¡µãÓàÊı
@@ -77,6 +76,24 @@ float normalize_angle_0_2pi(float angle_rad)                     //½«ÊäÈë½Ç¶È¹éÒ
 
     return normalized;                                            //·µ»Ø[0, 2¦Ğ)·¶Î§ÄÚµÄ½Ç¶È
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

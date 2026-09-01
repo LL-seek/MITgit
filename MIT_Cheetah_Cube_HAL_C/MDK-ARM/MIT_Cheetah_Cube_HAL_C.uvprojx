@@ -814,6 +814,16 @@
               <FileType>1</FileType>
               <FilePath>..\User\Common\math_ops.c</FilePath>
             </File>
+            <File>
+              <FileName>LUT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Common\LUT.c</FilePath>
+            </File>
+            <File>
+              <FileName>FastMath.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Common\FastMath.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
