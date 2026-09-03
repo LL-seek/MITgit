@@ -140,79 +140,60 @@ HAL_StatusTypeDef write_CSACR(uint8_t CSA_FET, uint8_t VREF_DIV,
 }
 
 
-HAL_StatusTypeDef DRV_Config(void)                                   //配置DRV8323的PWM、CSA及过流保护参数，返回HAL状态
+
+HAL_StatusTypeDef DRV_Init(void)                 //唤醒DRV8323，设置COAST并清故障，返回HAL状态
 {
-    HAL_StatusTypeDef status;                                        //保存每次寄存器配置的返回状态
+    HAL_StatusTypeDef status;                   //保存本次DCR写入的HAL返回状态
 
-    status = write_DCR(DIS_CPUV_EN, DIS_GDF_EN, OTW_REP_DIS,           //配置3路PWM模式，保持COAST，清故障位设为0
-                       PWM_MODE_3X, PWM_1X_COM_SYNC, PWM_1X_DIR_0,
-                       1U, 0U, 0U);
-    if (status != HAL_OK)                                           //DCR配置失败时，停止后续配置
-    {
-        return status;                                              //将本次配置的失败状态返回给调用者
-    }
+    HAL_GPIO_WritePin(DRV_ENABLE_GPIO_Port,     //DRV使能信号所在的GPIO端口
+                      DRV_ENABLE_Pin,           //DRV使能引脚
+                      GPIO_PIN_SET);            //拉高ENABLE，唤醒DRV8323
 
-    status = write_CSACR(CSA_FET_SP, VREF_DIV_2, 0U, CSA_GAIN_40,      //配置VREF/2参考电压、40倍增益及1.0V采样过流阈值
-                         DIS_SEN_EN, 0U, 0U, 0U, SEN_LVL_1_0);
-    if (status != HAL_OK)                                              //CSACR配置失败时，停止后续配置
-    {
-        return status;                                                 //将本次配置的失败状态返回给调用者
-    }
+    HAL_Delay(1U);                              //等待至少1ms，再开始首次SPI通信
 
-    return write_OCPCR(TRETRY_4MS, DEADTIME_200NS,                     //配置过流保护和死区时间，返回本次寄存器写入的HAL状态
-                       OCP_RETRY, OCP_DEG_8US, VDS_LVL_1_88);
+    status = write_DCR(DIS_CPUV_EN,             //启用电荷泵欠压故障保护
+                       DIS_GDF_EN,              //启用栅极驱动故障保护
+                       OTW_REP_DIS,             //不通过nFAULT引脚和FAULT位上报过温预警
+                       PWM_MODE_3X,             //选择3路PWM输入模式
+                       PWM_1X_COM_SYNC,         //1路PWM模式下选择同步整流
+                       PWM_1X_DIR_0,            //1路PWM模式的方向控制位设为0
+                       1U,                      //COAST：关断全部MOSFET，功率输出进入高阻态
+                       0U,                      //BRAKE：不强制制动
+                       1U);                     //CLR_FLT：请求清除锁存故障
+
+if (status == HAL_OK)                        //DCR写入的HAL返回成功后，配置电流采样放大器
+{
+    status = write_CSACR(CSA_FET_SP,         //选择SPx作为电流采样放大器的正输入
+                         VREF_DIV_2,         //参考电压选择VREF/2
+                         0U,                 //LS_REF：低侧VDS检测参考选择位设为0
+                         CSA_GAIN_40,        //电流采样放大器增益设为40倍
+                         DIS_SEN_EN,         //启用电流采样过流检测
+                         0U,                 //CSA_CAL_A：不启用A相CSA校准
+                         0U,                 //CSA_CAL_B：不启用B相CSA校准
+                         0U,                 //CSA_CAL_C：不启用C相CSA校准
+                         SEN_LVL_1_0);       //电流采样过流检测阈值设为1.0V
 }
 
-
-
-HAL_StatusTypeDef DRV_CheckConfig(DRV_ConfigSnapshot *snapshot)       //回读并校验DRV8323配置，将寄存器快照保存到snapshot，返回HAL状态
+if (status == HAL_OK)                        //CSA配置写入的HAL返回成功后，配置过流保护
 {
-    HAL_StatusTypeDef status;                                       //保存每次寄存器读取的返回状态
-
-    status = read_register(DCR, &snapshot->dcr);                     //读取DCR寄存器，将回读值保存到snapshot->dcr
-    if (status != HAL_OK)                                           //DCR读取失败时，停止后续读取和校验
-    {
-        return status;                                              //将本次读取的失败状态返回给调用者
-    }
-
-    status = read_register(HSR, &snapshot->hsr);                     //读取HSR寄存器，将回读值保存到snapshot->hsr
-    if (status != HAL_OK)                                           //HSR读取失败时，停止后续读取和校验
-    {
-        return status;                                              //将本次读取的失败状态返回给调用者
-    }
-
-    status = read_register(LSR, &snapshot->lsr);                     //读取LSR寄存器，将回读值保存到snapshot->lsr
-    if (status != HAL_OK)                                           //LSR读取失败时，停止后续读取和校验
-    {
-        return status;                                              //将本次读取的失败状态返回给调用者
-    }
-
-    status = read_register(OCPCR, &snapshot->ocpcr);                 //读取OCPCR寄存器，将回读值保存到snapshot->ocpcr
-    if (status != HAL_OK)                                           //OCPCR读取失败时，停止后续读取和校验
-    {
-        return status;                                              //将本次读取的失败状态返回给调用者
-    }
-
-    status = read_register(CSACR, &snapshot->csacr);                 //读取CSACR寄存器，将回读值保存到snapshot->csacr
-    if (status != HAL_OK)                                           //CSACR读取失败时，停止后续比较
-    {
-        return status;                                              //将本次读取的失败状态返回给调用者
-    }
-
-    if ((snapshot->dcr   != 0x0024U) ||                              //比较五个寄存器的回读值与期望值，任意一项不一致则校验失败
-        (snapshot->hsr   != 0x03FFU) ||
-        (snapshot->lsr   != 0x07FFU) ||
-        (snapshot->ocpcr != 0x027FU) ||
-        (snapshot->csacr != 0x02C3U))
-    {
-        return HAL_ERROR;                                           //返回配置值不匹配的错误状态
-    }
-
-    return HAL_OK;                                                  //全部寄存器读取成功且配置值一致，返回校验成功状态
+    status = write_OCPCR(TRETRY_4MS,         //过流故障自动重试时间设为4ms
+                         DEADTIME_200NS,     //死区时间设为200ns
+                         OCP_RETRY,          //过流保护选择自动重试模式
+                         OCP_DEG_8US,        //过流检测去毛刺时间设为8us
+                         VDS_LVL_1_88);      //MOSFET漏源电压VDS的过流检测阈值设为1.88V
 }
 
+	
+if (status != HAL_OK)                       //如果本次SPI传输未成功
+{
+    HAL_GPIO_WritePin(DRV_ENABLE_GPIO_Port, //DRV使能信号所在的GPIO端口
+                          DRV_ENABLE_Pin,       //DRV使能引脚
+                          GPIO_PIN_RESET);      //拉低ENABLE，关闭驱动芯片
+}
 
+return status;                              //返回本次DCR写入的HAL状态
 
+}
 
 
 

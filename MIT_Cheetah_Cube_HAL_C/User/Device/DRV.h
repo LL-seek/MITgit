@@ -32,14 +32,6 @@
 #define OCP_DEG_8US         0x3U        //过流检测去毛刺时间选择8us
 #define VDS_LVL_1_88        0xFU        //MOSFET漏源电压VDS的过流检测阈值选择1.88V
 
-typedef struct
-{
-    uint16_t dcr;       //驱动控制寄存器的读回值
-    uint16_t hsr;       //高侧栅极驱动寄存器的读回值
-    uint16_t lsr;       //低侧栅极驱动寄存器的读回值
-    uint16_t ocpcr;     //过流保护控制寄存器的读回值
-    uint16_t csacr;     //CSA 控制寄存器的读回值
-} DRV_ConfigSnapshot;
 
 HAL_StatusTypeDef read_register(uint8_t reg, uint16_t *val);      //读取寄存器reg，结果写入*val，返回HAL状态
 HAL_StatusTypeDef write_register(uint8_t reg, uint16_t val);      //将val写入寄存器reg，返回HAL状态
@@ -66,9 +58,7 @@ HAL_StatusTypeDef write_OCPCR(uint8_t TRETRY, uint8_t DEAD_TIME,  uint8_t OCP_MO
                             
 HAL_StatusTypeDef write_CSACR(uint8_t CSA_FET, uint8_t VREF_DIV, uint8_t LS_REF, uint8_t CSA_GAIN,uint8_t DIS_SEN, uint8_t CSA_CAL_A,uint8_t CSA_CAL_B, uint8_t CSA_CAL_C, uint8_t SEN_LVL);      //配置电流采样放大器控制寄存器CSACR，设置采样、校准及过流检测参数，返回HAL状态
                              
-HAL_StatusTypeDef DRV_Config(void);                                  //配置DRV8323驱动芯片的工作参数，返回配置过程的HAL状态                           
-                             
-HAL_StatusTypeDef DRV_CheckConfig(DRV_ConfigSnapshot *snapshot);     //回读并校验DRV8323配置，将寄存器快照保存到snapshot，返回HAL状态
+HAL_StatusTypeDef DRV_Init(void);    //启动DRV8323：拉高ENABLE、等待就绪、设置COAST并清故障，返回HAL状态
 
 
 #endif     
