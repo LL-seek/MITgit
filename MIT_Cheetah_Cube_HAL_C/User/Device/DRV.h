@@ -60,7 +60,7 @@ HAL_StatusTypeDef write_CSACR(uint8_t CSA_FET, uint8_t VREF_DIV, uint8_t LS_REF,
                              
 HAL_StatusTypeDef DRV_Init(void);    //启动DRV8323：拉高ENABLE、等待就绪、设置COAST并清故障，返回HAL状态
 
-
+HAL_StatusTypeDef calibrate(void);    //执行DRV8323电流采样放大器CSA校准，返回HAL状态
 #endif     
 
 

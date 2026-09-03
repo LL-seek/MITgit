@@ -141,6 +141,30 @@ HAL_StatusTypeDef write_CSACR(uint8_t CSA_FET, uint8_t VREF_DIV,
 
 
 
+HAL_StatusTypeDef calibrate(void)                                    //Ö´ĞĞDRV8323µÄCSAĞ£×¼£¬·µ»ØHAL×´Ì¬
+{
+    HAL_StatusTypeDef status;                                       //±£´æ±¾´ÎSPIÍ¨ĞÅµÄ·µ»Ø×´Ì¬
+    uint16_t val;                                                   //±£´æĞ£×¼Ç°µÄCSA¼Ä´æÆ÷ÅäÖÃ
+
+    status = read_register(CSACR, &val);                             //¶ÁÈ¡µ±Ç°CSAÅäÖÃ£¬½«¼Ä´æÆ÷Öµ±£´æµ½val
+    if (status != HAL_OK)                                            //¶ÁÈ¡Î´³É¹¦Ê±½áÊø±¾´ÎĞ£×¼
+    {
+        return status;                                               //½«¶ÁÈ¡Ê§°Ü×´Ì¬·µ»Ø¸øµ÷ÓÃ·½
+    }
+
+    status = write_register(CSACR, (uint16_t)(val | 0x001CU));        //½«bit4¡¢bit3¡¢bit2ÖÃ1£¬Æô¶¯A¡¢B¡¢CÈıÂ·CSAĞ£×¼
+    if (status != HAL_OK)                                             //Ğ£×¼ÃüÁîĞ´ÈëÎ´³É¹¦Ê±½áÊø±¾´ÎĞ£×¼
+    {
+        return status;                                                //½«Ğ´ÈëÊ§°Ü×´Ì¬·µ»Ø¸øµ÷ÓÃ·½
+    }
+
+    HAL_Delay(1U);                                                    //µÈ´ıÖÁÉÙ1ms£¬Ê¹ÄÚ²¿Ğ£×¼Íê³É£»½öÔÚÆô¶¯½×¶Îµ÷ÓÃ
+
+    return write_register(CSACR, (uint16_t)(val & ~0x001CU));         //Çå³ıÈı¸öĞ£×¼Î»£¬±£ÁôÆäËûÅäÖÃ£¬»Ö¸´Õı³£²ÉÑù²¢·µ»ØĞ´Èë×´Ì¬
+}
+
+
+
 HAL_StatusTypeDef DRV_Init(void)                 //»½ĞÑDRV8323£¬ÉèÖÃCOAST²¢Çå¹ÊÕÏ£¬·µ»ØHAL×´Ì¬
 {
     HAL_StatusTypeDef status;                   //±£´æ±¾´ÎDCRĞ´ÈëµÄHAL·µ»Ø×´Ì¬
@@ -181,6 +205,11 @@ if (status == HAL_OK)                        //CSAÅäÖÃĞ´ÈëµÄHAL·µ»Ø³É¹¦ºó£¬ÅäÖÃ¹
                          OCP_RETRY,          //¹ıÁ÷±£»¤Ñ¡Ôñ×Ô¶¯ÖØÊÔÄ£Ê½
                          OCP_DEG_8US,        //¹ıÁ÷¼ì²âÈ¥Ã«´ÌÊ±¼äÉèÎª8us
                          VDS_LVL_1_88);      //MOSFETÂ©Ô´µçÑ¹VDSµÄ¹ıÁ÷¼ì²âãĞÖµÉèÎª1.88V
+}
+
+if (status == HAL_OK)              //Ç°Ò»²½·µ»ØHAL_OKÊ±Ö´ĞĞCSAĞ£×¼
+{
+    status = calibrate();          //Ö´ĞĞCSAĞ£×¼£¬²¢±£´æ·µ»ØµÄHAL×´Ì¬
 }
 
 	
