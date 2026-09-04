@@ -2,7 +2,8 @@
 #define DRV_H                                                               
 
 #include "stm32f4xx_hal.h"                                                   
-#include <stdint.h>      
+#include <stdint.h>    
+#include <stdbool.h>	
 
 
 #define FSR1    0x00U                                           //故障状态寄存器1地址
@@ -35,7 +36,6 @@
 
 HAL_StatusTypeDef read_register(uint8_t reg, uint16_t *val);      //读取寄存器reg，结果写入*val，返回HAL状态
 HAL_StatusTypeDef write_register(uint8_t reg, uint16_t val);      //将val写入寄存器reg，返回HAL状态
-
 HAL_StatusTypeDef DRV_Transfer16(uint16_t tx_data, uint16_t *rx_data);          //发送tx_data并将接收值写入rx_data，返回HAL_OK时接收数据有效
 
 HAL_StatusTypeDef write_DCR(                // 配置驱动控制寄存器DCR，返回本次写入的HAL状态
@@ -61,6 +61,12 @@ HAL_StatusTypeDef write_CSACR(uint8_t CSA_FET, uint8_t VREF_DIV, uint8_t LS_REF,
 HAL_StatusTypeDef DRV_Init(void);    //启动DRV8323：拉高ENABLE、等待就绪、设置COAST并清故障，返回HAL状态
 
 HAL_StatusTypeDef calibrate(void);    //执行DRV8323电流采样放大器CSA校准，返回HAL状态
+
+HAL_StatusTypeDef disable_gd(void);  //进入COAST；SPI失败时拉低ENABLE
+
+HAL_StatusTypeDef enable_gd(void);  //退出COAST；SPI失败时拉低ENABLE
+
+bool DRV_IsReady(void);  //查询驱动是否已初始化并保持使能
 #endif     
 
 

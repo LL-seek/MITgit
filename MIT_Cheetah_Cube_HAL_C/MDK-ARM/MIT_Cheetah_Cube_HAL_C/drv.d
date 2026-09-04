@@ -32,5 +32,6 @@ mit_cheetah_cube_hal_c\drv.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_
 mit_cheetah_cube_hal_c\drv.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 mit_cheetah_cube_hal_c\drv.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 mit_cheetah_cube_hal_c\drv.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+mit_cheetah_cube_hal_c\drv.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 mit_cheetah_cube_hal_c\drv.o: ../Core/Inc/spi.h
 mit_cheetah_cube_hal_c\drv.o: ../Core/Inc/main.h

@@ -53,15 +53,13 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, DRV_CS_N_Pin|ENC1_CS_N_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, PWM_DRV_A_Pin|PWM_DRV_B_Pin|PWM_DRV_C_Pin|DRV_ENABLE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(DRV_ENABLE_GPIO_Port, DRV_ENABLE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(ENC2_CS_N_GPIO_Port, ENC2_CS_N_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : DRV_CS_N_Pin PWM_DRV_A_Pin PWM_DRV_B_Pin PWM_DRV_C_Pin
-                           ENC1_CS_N_Pin */
-  GPIO_InitStruct.Pin = DRV_CS_N_Pin|PWM_DRV_A_Pin|PWM_DRV_B_Pin|PWM_DRV_C_Pin
-                          |ENC1_CS_N_Pin;
+  /*Configure GPIO pins : DRV_CS_N_Pin ENC1_CS_N_Pin */
+  GPIO_InitStruct.Pin = DRV_CS_N_Pin|ENC1_CS_N_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

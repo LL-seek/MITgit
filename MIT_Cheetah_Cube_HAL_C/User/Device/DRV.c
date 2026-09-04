@@ -3,6 +3,8 @@
 #include "main.h"                                                                                             
 
 #define DRV_SPI_TIMEOUT_MS  2U                                                                                //设置SPI收发的超时参数为2ms
+static bool drv_ready = false;  //记录驱动的软件就绪状态
+
 
 HAL_StatusTypeDef DRV_Transfer16(uint16_t tx_data, uint16_t *rx_data)                                            //发送并接收一个16位数据，返回HAL状态
 {
@@ -168,6 +170,7 @@ HAL_StatusTypeDef calibrate(void)                                    //执行DRV83
 HAL_StatusTypeDef DRV_Init(void)                 //唤醒DRV8323，设置COAST并清故障，返回HAL状态
 {
     HAL_StatusTypeDef status;                   //保存本次DCR写入的HAL返回状态
+   	drv_ready = false;  //初始化尚未完成
 
     HAL_GPIO_WritePin(DRV_ENABLE_GPIO_Port,     //DRV使能信号所在的GPIO端口
                       DRV_ENABLE_Pin,           //DRV使能引脚
@@ -220,9 +223,68 @@ if (status != HAL_OK)                       //如果本次SPI传输未成功
                           GPIO_PIN_RESET);      //拉低ENABLE，关闭驱动芯片
 }
 
+drv_ready = (status == HAL_OK);  //整个初始化流程成功后才置为就绪
 return status;                              //返回本次DCR写入的HAL状态
 
 }
+
+
+
+HAL_StatusTypeDef disable_gd(void)                                      //请求进入COAST，返回HAL通信状态
+{
+    HAL_StatusTypeDef status;                                          //保存寄存器读写的返回状态
+    uint16_t val;                                                      //保存当前DCR寄存器配置
+
+    status = read_register(DCR, &val);                                  //读取DCR，将配置保存到val
+
+    if (status == HAL_OK)                                              //读取成功后，修改并写回配置
+    {
+        status = write_register(DCR, (uint16_t)(val | 0x0004U));         //将COAST位bit2置1，保留其他配置
+    }
+
+    if (status != HAL_OK)                                              //读取或写入失败时，执行硬件关断
+    {
+			drv_ready = false;  //通信失败后清除就绪状态
+        HAL_GPIO_WritePin(DRV_ENABLE_GPIO_Port,                        //ENABLE信号所在的GPIO端口
+                          DRV_ENABLE_Pin,                             //ENABLE引脚
+                          GPIO_PIN_RESET);                            //输出低电平，关闭驱动芯片
+    }
+
+    return status;                                                    //返回读取失败状态或最后一次写入状态
+}
+
+
+HAL_StatusTypeDef enable_gd(void)                                       //请求退出COAST，返回HAL通信状态
+{
+    HAL_StatusTypeDef status;                                          //保存寄存器读写的返回状态
+    uint16_t val;                                                      //保存当前DCR寄存器配置
+
+    status = read_register(DCR, &val);                                  //读取DCR，将配置保存到val
+
+    if (status == HAL_OK)                                              //读取成功后，修改并写回配置
+    {
+        status = write_register(DCR, (uint16_t)(val & ~0x0004U));        //清除COAST位bit2，保留其余配置
+    }
+
+    if (status != HAL_OK)                                              //读取或写入失败时，执行硬件关断
+    {
+			drv_ready = false;  //通信失败后清除就绪状态
+        HAL_GPIO_WritePin(DRV_ENABLE_GPIO_Port,                        //ENABLE信号所在的GPIO端口
+                          DRV_ENABLE_Pin,                             //ENABLE引脚
+                          GPIO_PIN_RESET);                            //输出低电平，关闭驱动芯片
+    }
+
+    return status;                                                    //返回读取失败状态或最后一次写入状态
+}
+
+
+bool DRV_IsReady(void)
+{
+    return drv_ready &&
+           (HAL_GPIO_ReadPin(DRV_ENABLE_GPIO_Port,
+                            DRV_ENABLE_Pin) == GPIO_PIN_SET);
+}
+
 
 
 
