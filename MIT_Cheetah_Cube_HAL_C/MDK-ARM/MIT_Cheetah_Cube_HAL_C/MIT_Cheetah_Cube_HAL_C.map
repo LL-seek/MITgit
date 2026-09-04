@@ -1296,9 +1296,9 @@ Removing Unused input sections from the image.
     Removing pwm.o(.rev16_text), (4 bytes).
     Removing pwm.o(.revsh_text), (4 bytes).
     Removing pwm.o(.rrx_text), (6 bytes).
-    Removing pwm.o(i.PWM_SetCompare), (24 bytes).
+    Removing pwm.o(i.PWM_SetCompare), (168 bytes).
 
-512 unused section(s) (total 40422 bytes) removed from the image.
+512 unused section(s) (total 40566 bytes) removed from the image.
 
 ==============================================================================
 

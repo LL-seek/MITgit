@@ -3,12 +3,10 @@
 
 #include <stdint.h>                                          
 
-void PWM_SetCompare(uint32_t compare_u,                      //U相TIM1比较计数值
-                    uint32_t compare_v,                      //V相TIM1比较计数值
-                    uint32_t compare_w);                     //W相TIM1比较计数值
+void PWM_SetCompare(float duty_u,
+                    float duty_v,
+                    float duty_w);                           //将U/V/W三相占空比转换为TIM1比较值并写入对应通道
 
 #endif                                                       
-
-
 
 
