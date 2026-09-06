@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -30,6 +31,7 @@
 #include "bsp_emergency_stop.h"
 #include "bsp_debug_uart.h"
 #include "DRV.h"
+#include "adc_sample.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,7 +52,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+ControllerStruct controller;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,6 +99,9 @@ BSP_SafeGpioEarlyInit();
   MX_USART2_UART_Init();
   MX_SPI1_Init();
   MX_TIM1_Init();
+  MX_ADC1_Init();
+  MX_ADC2_Init();
+  MX_ADC3_Init();
   /* USER CODE BEGIN 2 */
   if (!BSP_Time_Init())
   {
@@ -107,8 +112,23 @@ BSP_SafeGpioEarlyInit();
   {
     Error_Handler();
   }
+	
+	Init_ADC();
+	
+  if (!zero_current(&controller.adc1_offset,&controller.adc2_offset))
+  {
+    Error_Handler();
+  }
+	
+	/* 清除初始化留下的更新标志，等待自然周期产生中断 */
+  __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
 
-			(void)BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
+  /* 启动 TIM1 计数和更新中断，开始周期采样 */
+  if (HAL_TIM_Base_Start_IT(&htim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */

@@ -1,8 +1,6 @@
 mit_cheetah_cube_hal_c\pwm.o: ..\User\MotorHW\pwm.c
 mit_cheetah_cube_hal_c\pwm.o: ..\User\MotorHW\pwm.h
 mit_cheetah_cube_hal_c\pwm.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
-mit_cheetah_cube_hal_c\pwm.o: ../Core/Inc/tim.h
-mit_cheetah_cube_hal_c\pwm.o: ../Core/Inc/main.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 mit_cheetah_cube_hal_c\pwm.o: ../Core/Inc/stm32f4xx_hal_conf.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
@@ -25,6 +23,9 @@ mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h
+mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h
+mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
@@ -34,4 +35,8 @@ mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 mit_cheetah_cube_hal_c\pwm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+mit_cheetah_cube_hal_c\pwm.o: ../Core/Inc/tim.h
+mit_cheetah_cube_hal_c\pwm.o: ../Core/Inc/main.h
 mit_cheetah_cube_hal_c\pwm.o: ../User/config/hw_config.h
+mit_cheetah_cube_hal_c\pwm.o: ../User/Device/DRV.h
+mit_cheetah_cube_hal_c\pwm.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h

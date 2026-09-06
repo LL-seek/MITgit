@@ -22,6 +22,9 @@ mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm3
 mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
 mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
 mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h
+mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h
+mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h
 mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 mit_cheetah_cube_hal_c\stm32f4xx_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h

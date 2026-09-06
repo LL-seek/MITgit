@@ -1,6 +1,11 @@
 #ifndef FOC_H
 #define FOC_H
 
+#include "motor_types.h"
+
+/* 在控制中断内同步调用；无效输入会清除controller->adc.valid。 */
+bool FOC_SetAdcSnapshot(ControllerStruct *controller, const AdcSnapshot *sample);
+
 void abc(float theta, float d, float q, float *a, float *b, float *c);                       //将dq分量逆变换为三相a/b/c分量
 
 void dq0(float theta, float a, float b, float c, float *d, float *q);                        //将三相a/b/c分量变换为dq分量

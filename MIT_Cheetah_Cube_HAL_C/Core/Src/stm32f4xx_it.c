@@ -22,11 +22,14 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "foc.h"
+#include "adc_sample.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
+static AdcSnapshot adc_sample;
+extern ControllerStruct controller;
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -206,7 +209,12 @@ void SysTick_Handler(void)
 void TIM1_UP_TIM10_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 0 */
-
+	if ((__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_UPDATE) != RESET) &&       //检查TIM1是否产生了更新事件
+    (__HAL_TIM_GET_IT_SOURCE(&htim1, TIM_IT_UPDATE) != RESET))      //确认TIM1更新中断已经使能
+{
+ADC_Sample(&adc_sample);                                      //启动三路ADC同步转换，等待完成并将结果写入采样快照
+FOC_SetAdcSnapshot(&controller, &adc_sample);             //将有效快照复制到控制器；无效时清除控制器的ADC有效标志，忽略返回值
+}
   /* USER CODE END TIM1_UP_TIM10_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */

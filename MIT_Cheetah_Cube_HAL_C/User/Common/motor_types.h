@@ -55,6 +55,8 @@ typedef struct                           //定义位置传感器快照结构体
 
 typedef struct
 {
+    AdcSnapshot adc;                    //本轮ADC输入，使用前检查valid
+
     float i_a;                         //A相电流，A
     float i_b;                         //B相电流，A
     float i_c;                         //C相电流，A

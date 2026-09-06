@@ -4,6 +4,17 @@
 #include "hw_config.h"
 #include "math_ops.h"
 
+bool FOC_SetAdcSnapshot(ControllerStruct *controller,const AdcSnapshot *sample)
+{
+    controller->adc.adc1_raw = sample->adc1_raw; //ADC1原始值
+    controller->adc.adc2_raw = sample->adc2_raw; //ADC2原始值
+    controller->adc.adc3_raw = sample->adc3_raw; //ADC3原始值
+    controller->adc.seq      = sample->seq;      //复制本轮采样序号
+    controller->adc.valid    = sample->valid;    //复制有效位，此时为 true
+
+    return true;                            // 完整快照已成功写入控制器
+}
+
 
 void abc(float theta, float d, float q, float *a, float *b, float *c)  //逆Park和逆Clarke变换：dq坐标转换为三相abc坐标
 {
