@@ -32,6 +32,7 @@
 #include "bsp_debug_uart.h"
 #include "DRV.h"
 #include "adc_sample.h"
+#include "PositionSensor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,6 +54,8 @@
 
 /* USER CODE BEGIN PV */
 ControllerStruct controller;
+MotorParameters motor_parameters;
+PositionSnapshot position_sample;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,7 +77,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-BSP_SafeGpioEarlyInit();
+  BSP_SafeGpioEarlyInit();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -102,6 +105,7 @@ BSP_SafeGpioEarlyInit();
   MX_ADC1_Init();
   MX_ADC2_Init();
   MX_ADC3_Init();
+  MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
   if (!BSP_Time_Init())
   {
@@ -120,10 +124,25 @@ BSP_SafeGpioEarlyInit();
     Error_Handler();
   }
 	
-	/* Çå³ı³õÊ¼»¯ÁôÏÂµÄ¸üĞÂ±êÖ¾£¬µÈ´ı×ÔÈ»ÖÜÆÚ²úÉúÖĞ¶Ï */
+
+ PositionSensor_WriteLUT(motor_parameters.ENCODER_LUT);  	// åœ¨å¯åŠ¨å‘¨æœŸé‡‡æ ·å‰ï¼Œå°†å‚æ•°ä¸­çš„ç¼–ç å™¨æ ¡æ­£è¡¨å†™å…¥æ¨¡å—
+	
+	if (PositionSensor_ReadRaw(ENC1_CS_N_GPIO_Port,
+                           ENC1_CS_N_Pin,
+                           &position_sample.raw) != HAL_OK)    //é¢„å…ˆå‘é€ä¸»ç¼–ç å™¨è§’åº¦å‘½ä»¤
+{
+    Error_Handler();                                          //è¯»å–äº‹åŠ¡å¤±è´¥æ—¶æ²¿ç”¨ç°æœ‰é”™è¯¯å¤„ç†
+}
+
+if (PositionSensor_ReadRaw(ENC2_CS_N_GPIO_Port,
+                           ENC2_CS_N_Pin,
+                           &position_sample.raw2) != HAL_OK)   //é¢„å…ˆå‘é€å‰¯ç¼–ç å™¨è§’åº¦å‘½ä»¤
+{
+    Error_Handler();                                          //è¯»å–äº‹åŠ¡å¤±è´¥æ—¶æ²¿ç”¨ç°æœ‰é”™è¯¯å¤„ç†
+}
+	
   __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
 
-  /* Æô¶¯ TIM1 ¼ÆÊıºÍ¸üĞÂÖĞ¶Ï£¬¿ªÊ¼ÖÜÆÚ²ÉÑù */
   if (HAL_TIM_Base_Start_IT(&htim1) != HAL_OK)
   {
     Error_Handler();

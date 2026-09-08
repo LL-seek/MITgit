@@ -4,7 +4,7 @@
 #include "motor_types.h"
 
 /* 在控制中断内同步调用；无效输入会清除controller->adc.valid。 */
-bool FOC_SetAdcSnapshot(ControllerStruct *controller, const AdcSnapshot *sample);
+bool FOC_SetAdcSnapshot(ControllerStruct *controller, const AdcSnapshot *sample,const MotorParameters *parameters);
 
 void abc(float theta, float d, float q, float *a, float *b, float *c);                       //将dq分量逆变换为三相a/b/c分量
 

@@ -39,4 +39,5 @@ mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_it.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../User/Control/foc.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../User/Common/motor_types.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
-mit_cheetah_cube_hal_c\stm32f4xx_it.o: ..\User\MotorHW\adc_sample.h
+mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../User/MotorHW/adc_sample.h
+mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../User/Device/PositionSensor.h

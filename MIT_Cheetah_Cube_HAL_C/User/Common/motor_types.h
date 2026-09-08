@@ -49,6 +49,9 @@ typedef struct                           //定义位置传感器快照结构体
     float dtheta_elec;                  //电机电角速度，rad/s
     uint32_t seq;                       //本次位置采样所在的控制周期序号
     bool valid;                         //位置数据是否有效，true有效，false无效
+	
+	  int32_t angle;                      //编码器1经过LUT校正后的角度计数
+	  float position;                     // 主编码器累计机械角度，未扣除机械零位偏置，单位rad
 } PositionSnapshot;  
 
 
@@ -141,7 +144,10 @@ typedef struct                           //电机可持久化参数
     int32_t RAW_OFFSET;                 //编码器1原始零位偏置
     int32_t RAW2_OFFSET;                //编码器2原始零位偏置
     int32_t ENCODER_LUT[128];           //编码器128项误差校正表
-} MotorParameters;                    
+} MotorParameters;   
+
+
+
 
 
 

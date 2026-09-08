@@ -20,16 +20,20 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_it.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "foc.h"
 #include "adc_sample.h"
+#include "PositionSensor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
 static AdcSnapshot adc_sample;
 extern ControllerStruct controller;
+extern MotorParameters motor_parameters;
+extern PositionSnapshot position_sample;
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -209,11 +213,14 @@ void SysTick_Handler(void)
 void TIM1_UP_TIM10_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 0 */
-	if ((__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_UPDATE) != RESET) &&       //¼ì²éTIM1ÊÇ·ñ²úÉúÁË¸üĞÂÊÂ¼ş
-    (__HAL_TIM_GET_IT_SOURCE(&htim1, TIM_IT_UPDATE) != RESET))      //È·ÈÏTIM1¸üĞÂÖĞ¶ÏÒÑ¾­Ê¹ÄÜ
+	if ((__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_UPDATE) != RESET) &&       
+    (__HAL_TIM_GET_IT_SOURCE(&htim1, TIM_IT_UPDATE) != RESET))      
 {
-ADC_Sample(&adc_sample);                                      //Æô¶¯ÈıÂ·ADCÍ¬²½×ª»»£¬µÈ´ıÍê³É²¢½«½á¹ûĞ´Èë²ÉÑù¿ìÕÕ
-FOC_SetAdcSnapshot(&controller, &adc_sample);             //½«ÓĞĞ§¿ìÕÕ¸´ÖÆµ½¿ØÖÆÆ÷£»ÎŞĞ§Ê±Çå³ı¿ØÖÆÆ÷µÄADCÓĞĞ§±êÖ¾£¬ºöÂÔ·µ»ØÖµ
+ADC_Sample(&adc_sample);    
+PositionSensor_Sample(&position_sample,
+                      &motor_parameters,
+                      0.000025f);                           //æŒ‰25å¾®ç§’å‘¨æœŸæ‰§è¡Œä½ç½®å’Œé€Ÿåº¦é‡‡æ ·
+FOC_SetAdcSnapshot(&controller, &adc_sample, &motor_parameters);  
 }
   /* USER CODE END TIM1_UP_TIM10_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);

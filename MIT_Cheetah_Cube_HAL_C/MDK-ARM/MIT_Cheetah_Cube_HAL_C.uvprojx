@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F446xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/BSP;../User/Common;../User/config;../User/Control;../User/Device;..\User\MotorHW</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/BSP;../User/Common;../User/config;../User/Control;../User/Device;../User/MotorHW</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1204,6 +1204,11 @@
               <FileName>DRV.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\Device\DRV.c</FilePath>
+            </File>
+            <File>
+              <FileName>PositionSensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Device\PositionSensor.c</FilePath>
             </File>
           </Files>
         </Group>

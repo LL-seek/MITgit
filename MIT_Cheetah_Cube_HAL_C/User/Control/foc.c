@@ -4,16 +4,49 @@
 #include "hw_config.h"
 #include "math_ops.h"
 
-bool FOC_SetAdcSnapshot(ControllerStruct *controller,const AdcSnapshot *sample)
+bool FOC_SetAdcSnapshot(ControllerStruct *controller,const AdcSnapshot *sample,const MotorParameters *parameters)
 {
     controller->adc.adc1_raw = sample->adc1_raw; //ADC1原始值
     controller->adc.adc2_raw = sample->adc2_raw; //ADC2原始值
     controller->adc.adc3_raw = sample->adc3_raw; //ADC3原始值
     controller->adc.seq      = sample->seq;      //复制本轮采样序号
     controller->adc.valid    = sample->valid;    //复制有效位，此时为 true
+	
+	  if (!controller->adc.valid)
+    {
+        return false;
+    }
+	
+	  controller->v_bus = 0.95f * controller->v_bus                      //保留上一轮滤波后母线电压的95%
+                              + 0.05f                                  //本轮采样换算得到的母线电压占5%
+                              * (float)controller->adc.adc3_raw        //将ADC3母线电压原始码值转换为浮点数
+                              * V_SCALE;                               //乘以电压换算系数，更新滤波后的母线电压
 
-    return true;                            // 完整快照已成功写入控制器
-}
+		if (parameters->PHASE_ORDER)                                       //相序标志非零：ADC2对应B相电流，ADC1对应C相电流
+    {
+       controller->i_b = I_SCALE                                               //使用电流换算系数
+                                * (float)((int32_t)controller->adc.adc2_raw    //将ADC2原始值转为有符号整数，参与零偏相减
+                                - controller->adc2_offset);                    //减去ADC2零偏，差值转为浮点数后换算为B相电流
+
+       controller->i_c = I_SCALE                                               //使用电流换算系数
+                                * (float)((int32_t)controller->adc.adc1_raw    //将ADC1原始值转为有符号整数，参与零偏相减
+                                - controller->adc1_offset);                    //减去ADC1零偏，差值转为浮点数后换算为C相电流
+    }
+    else                                                                       //相序标志为0：ADC1对应B相电流，ADC2对应C相电流
+    {
+       controller->i_b = I_SCALE                                               //使用电流换算系数
+                                * (float)((int32_t)controller->adc.adc1_raw    //将ADC1原始值转为有符号整数，参与零偏相减
+                                - controller->adc1_offset);                    //减去ADC1零偏，差值转为浮点数后换算为B相电流
+
+       controller->i_c = I_SCALE                                               //使用电流换算系数
+                                * (float)((int32_t)controller->adc.adc2_raw    //将ADC2原始值转为有符号整数，参与零偏相减
+                                - controller->adc2_offset);                    //减去ADC2零偏，差值转为浮点数后换算为C相电流
+     }
+
+    controller->i_a = -controller->i_b - controller->i_c;                      //依据三相电流之和为0，由B、C相电流计算A相电流													
+															
+    return true;                            
+}  
 
 
 void abc(float theta, float d, float q, float *a, float *b, float *c)  //逆Park和逆Clarke变换：dq坐标转换为三相abc坐标

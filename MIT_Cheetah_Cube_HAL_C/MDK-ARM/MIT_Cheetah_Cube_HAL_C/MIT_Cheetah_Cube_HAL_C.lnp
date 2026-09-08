@@ -42,6 +42,7 @@
 "mit_cheetah_cube_hal_c\foc.o"
 "mit_cheetah_cube_hal_c\can_com.o"
 "mit_cheetah_cube_hal_c\drv.o"
+"mit_cheetah_cube_hal_c\positionsensor.o"
 "mit_cheetah_cube_hal_c\pwm.o"
 "mit_cheetah_cube_hal_c\adc_sample.o"
 --strict --scatter "MIT_Cheetah_Cube_HAL_C\MIT_Cheetah_Cube_HAL_C.sct"

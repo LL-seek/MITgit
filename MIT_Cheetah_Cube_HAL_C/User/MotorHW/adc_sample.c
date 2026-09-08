@@ -12,6 +12,13 @@ void Init_ADC(void)                                                //Ê¹ÄÜÈıÂ·ADC
     __HAL_ADC_ENABLE(&hadc1);                                      //Ê¹ÄÜÖ÷ADC1
 
     start_cycles = BSP_Time_NowCycles32();                          //¼ÇÂ¼ÈıÂ·ADCÊ¹ÄÜÍê³ÉÊ±µÄDWTÖÜÆÚÊı
+	  start_cycles = BSP_Time_NowCycles32();                          //´ÓÈıÂ·ADCÊ¹ÄÜÍê³Éºó¿ªÊ¼¼ÆÊ±
+
+    while (BSP_Time_ElapsedCycles32(start_cycles) <
+           (SystemCoreClock / 1000000U) * ADC_STAB_DELAY_US)
+    {
+        /* µÈ´ıADCÉÏµçÎÈ¶¨£¬½öÔÚ³õÊ¼»¯½×¶ÎÖ´ĞĞ */
+    }
 
 }
 
@@ -21,6 +28,8 @@ void ADC_Sample(AdcSnapshot *sample)                              //´¥·¢ÈıÂ·ADCÍ
 {
     uint32_t start_cycles;                                        //¼ÇÂ¼±¾´ÎADC×ª»»¿ªÊ¼Ê±µÄCPUÖÜÆÚÊı
     uint32_t timeout_cycles;                                      //±£´æ5Î¢Ãë¶ÔÓ¦µÄCPUÖÜÆÚÊı
+	  sample->seq++;                                                //¼ÇÂ¼±¾´Î²ÉÑùÖÜÆÚ£¬³¬Ê±Ò²¼ÆÈë
+    sample->valid = false;                                        //±¾ÂÖ²ÉÑù¿ªÊ¼Ê±ÏÈÇå³ıÓĞĞ§±êÖ¾
 
     timeout_cycles = (SystemCoreClock / 1000000U) * 5U;           //¼ÆËã±¾´ÎADC×ª»»ÔÊĞíµÈ´ıµÄ×î´óÖÜÆÚÊı
 
@@ -32,8 +41,8 @@ void ADC_Sample(AdcSnapshot *sample)                              //´¥·¢ÈıÂ·ADCÍ
 
     ADC1->CR2 |= ADC_CR2_SWSTART;                                 //ÓÉÖ÷ADC1´¥·¢ÈıÂ·¹æÔòÍ¬²½×ª»»
   	while ((__HAL_ADC_GET_FLAG(&hadc1, ADC_FLAG_EOC) == RESET) ||
-       (__HAL_ADC_GET_FLAG(&hadc2, ADC_FLAG_EOC) == RESET) ||
-       (__HAL_ADC_GET_FLAG(&hadc3, ADC_FLAG_EOC) == RESET))
+           (__HAL_ADC_GET_FLAG(&hadc2, ADC_FLAG_EOC) == RESET) ||
+           (__HAL_ADC_GET_FLAG(&hadc3, ADC_FLAG_EOC) == RESET))
     {
       if (BSP_Time_ElapsedCycles32(start_cycles) >= timeout_cycles)
     {
@@ -41,8 +50,6 @@ void ADC_Sample(AdcSnapshot *sample)                              //´¥·¢ÈıÂ·ADCÍ
     }
 }
 
-    sample->seq++;                                                //¸üĞÂADC²ÉÑùĞòºÅ
-    sample->valid = false;                                        //×ª»»Íê³ÉÇ°½«±¾´Î²ÉÑù±ê¼ÇÎªÎŞĞ§
 
 
     sample->adc1_raw = (uint16_t)ADC1->DR;                         //¶ÁÈ¡ADC1µçÁ÷Í¨µÀµÄÔ­Ê¼×ª»»½á¹û

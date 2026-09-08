@@ -46,5 +46,6 @@ mit_cheetah_cube_hal_c\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 mit_cheetah_cube_hal_c\main.o: ../User/BSP/bsp_emergency_stop.h
 mit_cheetah_cube_hal_c\main.o: ../User/BSP/bsp_debug_uart.h
 mit_cheetah_cube_hal_c\main.o: ../User/Device/DRV.h
-mit_cheetah_cube_hal_c\main.o: ..\User\MotorHW\adc_sample.h
+mit_cheetah_cube_hal_c\main.o: ../User/MotorHW/adc_sample.h
 mit_cheetah_cube_hal_c\main.o: ../User/Common/motor_types.h
+mit_cheetah_cube_hal_c\main.o: ../User/Device/PositionSensor.h
