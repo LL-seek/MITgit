@@ -49,3 +49,5 @@ mit_cheetah_cube_hal_c\main.o: ../User/Device/DRV.h
 mit_cheetah_cube_hal_c\main.o: ../User/MotorHW/adc_sample.h
 mit_cheetah_cube_hal_c\main.o: ../User/Common/motor_types.h
 mit_cheetah_cube_hal_c\main.o: ../User/Device/PositionSensor.h
+mit_cheetah_cube_hal_c\main.o: ../User/Control/foc.h
+mit_cheetah_cube_hal_c\main.o: ../User/config/motor_config.h

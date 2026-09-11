@@ -9,6 +9,7 @@
 #define DTC_SAFE  0.5f    //三相零转矩时的安全中点占空比为50%
 
 #define PWM_ARR  0x8CA                           //TIM1自动重装值，十进制为 2250
+#define OVERMODULATION 1.15f                     //弱磁计算使用的过调制系数
 
 #endif                                           
 

@@ -3,6 +3,49 @@
 #include "FastMath.h"
 #include "hw_config.h"
 #include "math_ops.h"
+#include "motor_config.h"      
+
+
+void init_controller_params(ControllerStruct *controller)  //初始化原工程电流环增益
+{
+    controller->ki_d = KI_D;                               //设置d轴每周期积分系数
+    controller->ki_q = KI_Q;                               //设置q轴每周期积分系数
+    controller->k_d = K_D;                                 //设置d轴比例增益，V/A
+    controller->k_q = K_Q;                                 //设置q轴比例增益，V/A
+}
+
+void reset_foc(ControllerStruct *controller)       //复位当前FOC运行状态
+{
+    controller->i_d_ref = 0.0f;                   //清零d轴电流参考值，A
+    controller->i_q_ref = 0.0f;                   //清零q轴电流参考值，A
+
+    controller->i_d = 0.0f;                       //清零d轴电流反馈值，A
+    controller->i_q = 0.0f;                       //清零q轴电流反馈值，A
+    controller->i_d_filt = 0.0f;                  //清零d轴电流滤波状态，A
+    controller->i_q_filt = 0.0f;                  //清零q轴电流滤波状态，A
+
+    controller->d_int = 0.0f;                     //清零d轴电流环积分电压，V
+    controller->q_int = 0.0f;                     //清零q轴电流环积分电压，V
+    controller->fw_int = 0.0f;                    //清零弱磁积分，A
+
+    controller->v_d = 0.0f;                       //清零d轴输出电压，V
+    controller->v_q = 0.0f;                       //清零q轴输出电压，V
+    controller->v_ref = 0.0f;                     //清零供弱磁使用的历史电压幅值，V
+
+    controller->v_u = 0.0f;                       //清零U相电压计算结果，V
+    controller->v_v = 0.0f;                       //清零V相电压计算结果，V
+    controller->v_w = 0.0f;                       //清零W相电压计算结果，V
+
+    controller->dtc_u = DTC_SAFE;                 //将U相占空比缓存恢复为中点
+    controller->dtc_v = DTC_SAFE;                 //将V相占空比缓存恢复为中点
+    controller->dtc_w = DTC_SAFE;                 //将W相占空比缓存恢复为中点
+}
+
+void reset_observer(ObserverStruct *observer)       //按原工程恢复观测器初值
+{
+    observer->temperature = 25.0f;                 //将热模型估算温度恢复为25℃
+    observer->resistance = R_PHASE;                //将估算相电阻恢复为电机配置值，Ω
+}
 
 bool FOC_SetAdcSnapshot(ControllerStruct *controller,const AdcSnapshot *sample,const MotorParameters *parameters)
 {
@@ -84,6 +127,44 @@ void svm(float v_bus,float u,float v,float w,float *dtc_u,float *dtc_v,float *dt
     *dtc_v = fminf(fmaxf((v - v_offset) / v_bus + 0.5f, DTC_MIN),DTC_MAX);       //计算V相占空比并限制在允许范围内
 
     *dtc_w = fminf(fmaxf((w - v_offset) / v_bus + 0.5f, DTC_MIN),DTC_MAX);       //计算W相占空比并限制在允许范围内
+}
+
+
+void torque_control(ControllerStruct *controller,FocCommand *command,const PositionSnapshot *position)  //迁移原工程的位置、速度和扭矩外环
+{
+    float torque_ref;                                 //目标输出轴扭矩，N·m
+
+    if (command->p_des >= PI)                         //目标位置达到或超过原工程上限
+    {
+        command->p_des = PI;                          //将目标位置限制为正π，rad
+    }
+    else if (command->p_des <= -PI)                   //目标位置达到或低于原工程下限
+    {
+        command->p_des = -PI;                         //将目标位置限制为负π，rad
+    }
+
+    torque_ref = command->kp * (command->p_des - position->theta_mech)       //位置误差产生的输出轴扭矩
+                 + command->t_ff                                             //前馈输出轴扭矩
+                 + command->kd * (command->v_des - position->dtheta_mech);   //速度误差产生的输出轴扭矩
+
+    controller->i_q_ref = torque_ref / KT_OUT;         //由输出轴扭矩换算q轴电流参考值，A
+    controller->i_d_ref = 0.0f;                        //沿用原工程外环给出的d轴电流参考值，A
+}
+
+
+
+void linearize_dtc(float *dtc)                      //沿用原工程的归一化电压补偿
+{
+    float sgn = 1.0f - 2.0f * (*dtc < 0.0f);       //根据电压分量确定符号，负值为-1，非负值为1
+
+    if (fabsf(*dtc) >= 0.01f)                      //归一化电压幅值达到原工程的分段阈值
+    {
+        *dtc = *dtc * 0.986f + 0.014f * sgn;       //沿用原工程的大幅值补偿系数
+    }
+    else
+    {
+        *dtc = 2.5f * (*dtc);                      //沿用原工程的小幅值补偿，零输入仍为零
+    }
 }
 
 

@@ -33,6 +33,8 @@
 #include "DRV.h"
 #include "adc_sample.h"
 #include "PositionSensor.h"
+#include "foc.h"                
+#include "motor_config.h"                          
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,9 +55,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-ControllerStruct controller;
-MotorParameters motor_parameters;
-PositionSnapshot position_sample;
+ControllerStruct controller;                       //保存FOC控制器运行状态
+ObserverStruct observer;                           //保存电机温度和相电阻观测状态
+MotorParameters motor_parameters;                  //保存电机参数
+PositionSnapshot position_sample;                  //保存编码器采样结果
+FocCommand command = {0};                          //保存控制命令，启动时目标值、增益和前馈扭矩全部为零
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -116,6 +120,11 @@ int main(void)
   {
     Error_Handler();
   }
+	reset_foc(&controller);                            //启动时复位原有FOC软件状态
+	controller.v_bus = V_NOMINAL;                      //沿用原工程48V的母线电压滤波初值
+  reset_observer(&observer);                         //启动时设置观测器温度和相电阻初值
+	motor_parameters.I_MAX = I_MAX_MOTOR;              //使用原工程默认最大电流，单位A
+	init_controller_params(&controller);               //启动控制中断前设置电流环增益
 	
 	Init_ADC();
 	
@@ -139,7 +148,7 @@ if (PositionSensor_ReadRaw(ENC2_CS_N_GPIO_Port,
                            &position_sample.raw2) != HAL_OK)   //预先发送副编码器角度命令
 {
     Error_Handler();                                          //读取事务失败时沿用现有错误处理
-}
+} 
 	
   __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
 

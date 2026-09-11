@@ -149,6 +149,21 @@ typedef struct                           //电机可持久化参数
 
 
 
+typedef struct                            //定义本控制周期的FOC采样输入
+{
+    AdcSnapshot adc;                      //本周期三路ADC采样结果
+    PositionSnapshot position;            //本周期编码器角度和速度结果
+} FocInput;
+
+typedef struct                            //定义FOC计算得到的三相占空比输出
+{
+    float dtc_u;                          //U相占空比，无量纲
+    float dtc_v;                          //V相占空比，无量纲
+    float dtc_w;                          //W相占空比，无量纲
+} FocOutput;
+
+
+
 
 
 

@@ -36,7 +36,14 @@
 //电机热模型参数
 
 #define R_TH                1.25f                           //电机热阻， K/W
-#define INV_M_TH            0.03125f                        //电机逆热容量， K/J
+#define INV_M_TH            0.03125f                        //电机逆热容量， K/J、
+
+
+#define K_D   0.77f       //d轴电流环比例增益，V/A
+#define K_Q   1.15f       //q轴电流环比例增益，V/A
+
+#define KI_D  0.21f       //d轴每周期积分系数，沿用原工程
+#define KI_Q  0.14f       //q轴每周期积分系数，沿用原工程
 
 
 #endif                                                       

@@ -8,3 +8,4 @@ mit_cheetah_cube_hal_c\foc.o: D:\Keil5\ARM\ARMCC\Bin\..\include\math.h
 mit_cheetah_cube_hal_c\foc.o: ../User/Common/FastMath.h
 mit_cheetah_cube_hal_c\foc.o: ../User/config/hw_config.h
 mit_cheetah_cube_hal_c\foc.o: ../User/Common/math_ops.h
+mit_cheetah_cube_hal_c\foc.o: ../User/config/motor_config.h
