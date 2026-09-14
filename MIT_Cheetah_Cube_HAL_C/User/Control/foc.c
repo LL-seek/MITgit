@@ -169,6 +169,103 @@ void linearize_dtc(float *dtc)                      //沿用原工程的归一化电压补偿
 
 
 
+bool FOC_Step(ControllerStruct *controller,const FocInput *input,FocCommand *command,const MotorParameters *parameters,FocOutput *output)                             //执行一个周期的FOC计算
+{
+    float i_d_error;                                         //d轴电流误差，A
+    float i_q_error;                                         //q轴电流误差，A
+    float dtc_d;                                             //d轴归一化电压
+    float dtc_q;                                             //q轴归一化电压
+
+    if (!FOC_SetAdcSnapshot(controller, &input->adc, parameters)
+        || !input->position.valid)                           //沿用现有ADC和位置有效标志
+    {
+        return false;                                        //本周期采样无效，不产生新输出
+    }
+
+    torque_control(controller, command, &input->position);    //计算位置、速度和扭矩对应的电流参考
+
+    dq0(input->position.theta_elec,
+        controller->i_a,
+        controller->i_b,
+        controller->i_c,
+        &controller->i_d,
+        &controller->i_q);                                   //将三相电流变换为dq电流
+
+    controller->i_q_filt =
+        0.95f * controller->i_q_filt + 0.05f * controller->i_q; //保留q轴测量电流滤波，A
+
+    controller->i_d_filt =
+        0.95f * controller->i_d_filt + 0.05f * controller->i_d; //保留d轴测量电流滤波，A
+
+    controller->fw_int +=
+        0.001f * (0.5f * OVERMODULATION * controller->v_bus
+                  - controller->v_ref);                      //根据上一周期电压需求更新弱磁积分
+
+    controller->fw_int =
+        fmaxf(fminf(controller->fw_int, 0.0f),
+              -parameters->I_FW_MAX);                        //限制最大弱磁电流，A
+
+    controller->i_d_ref = controller->fw_int;                 //将弱磁积分作为d轴电流参考，A
+
+    limit_norm(&controller->i_d_ref,
+               &controller->i_q_ref,
+               parameters->I_MAX);                           //限制dq电流参考矢量，A
+
+    i_d_error = controller->i_d_ref - controller->i_d;         //计算d轴电流误差，A
+    i_q_error = controller->i_q_ref - controller->i_q;         //计算q轴电流误差，A
+
+    controller->d_int +=
+        controller->k_d * controller->ki_d * i_d_error;       //更新d轴积分电压，V
+
+    controller->q_int +=
+        controller->k_q * controller->ki_q * i_q_error;       //更新q轴积分电压，V
+
+    controller->d_int =
+        fmaxf(fminf(controller->d_int,
+                    OVERMODULATION * controller->v_bus),
+              -OVERMODULATION * controller->v_bus);          //限制d轴积分电压，V
+
+    controller->q_int =
+        fmaxf(fminf(controller->q_int,
+                    OVERMODULATION * controller->v_bus),
+              -OVERMODULATION * controller->v_bus);          //限制q轴积分电压，V
+
+    controller->v_d =
+        controller->k_d * i_d_error + controller->d_int;      //计算d轴PI输出，V
+
+    controller->v_q =
+        controller->k_q * i_q_error + controller->q_int;      //计算q轴PI输出，V
+
+    controller->v_ref =
+        sqrtf(controller->v_d * controller->v_d
+              + controller->v_q * controller->v_q);          //保存限幅前电压幅值，供下一周期弱磁使用
+
+    limit_norm(&controller->v_d,
+               &controller->v_q,
+               OVERMODULATION * controller->v_bus);         //限制dq输出电压矢量，V
+
+    dtc_d = controller->v_d / controller->v_bus;              //将d轴电压归一化
+    dtc_q = controller->v_q / controller->v_bus;              //将q轴电压归一化
+
+    linearize_dtc(&dtc_d);                                    //执行原工程d轴补偿
+    linearize_dtc(&dtc_q);                                    //执行原工程q轴补偿
+
+    controller->v_d = dtc_d * controller->v_bus;              //恢复补偿后的d轴电压，V
+    controller->v_q = dtc_q * controller->v_bus;              //恢复补偿后的q轴电压，V
+
+    abc(input->position.theta_elec,controller->v_d,controller->v_q,&controller->v_u,&controller->v_v,&controller->v_w);                                   //将dq电压变换为三相电压
+
+    svm(controller->v_bus,controller->v_u,controller->v_v,controller->v_w,&controller->dtc_u,&controller->dtc_v,&controller->dtc_w);                                 //计算并限制三相占空比
+
+    output->dtc_u = controller->dtc_u;                        //输出U相占空比
+    output->dtc_v = controller->dtc_v;                        //输出V相占空比
+    output->dtc_w = controller->dtc_w;                        //输出W相占空比
+
+    return true;                                             //本周期FOC计算完成
+}
+
+
+
 
 
 

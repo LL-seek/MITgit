@@ -78,6 +78,33 @@ void pack_reply(uint8_t data[6],uint8_t can_id,const MotorFeedback *feedback)   
 
 
 
+uint8_t unpack_special_cmd(const uint8_t data[8])     //识别原工程已有的五种特殊帧
+{
+    uint32_t i;                                       //前六个公共前导字节的下标
+
+    for (i = 0U; i < 6U; i++)                         //五种特殊帧的前六字节都必须为0xFF
+    {
+        if (data[i] != 0xFFU)
+        {
+            return 0U;                                //不符合特殊帧格式
+        }
+    }
+
+    if ((data[7] == 0xFAU) || (data[7] == 0x01U))     //修改本机ID或主站ID，第七字节存放新ID
+    { 
+        return data[7];                               //返回命令类型，新ID仍从data[6]取得
+    }
+
+    if ((data[6] == 0xFFU) && ((data[7] == 0xFCU) || (data[7] == 0xFDU) || (data[7] == 0xFEU)))  //进入、退出和置零要求前七字节全部为0xFF
+    {
+        return data[7];                               //返回进入、退出或置零命令
+    }
+
+    return 0U;                                        
+}
+
+
+
 
 
 

@@ -5,9 +5,17 @@
 #include <stdint.h>                                      //Ìá¹© uint8_t ºÍ uint16_t ÀàĞÍ
 
 #define BSP_DEBUG_UART_TX_CAPACITY  128U                 //µ¥´Î×î´ó·¢ËÍ×Ö½ÚÊı
+#define BSP_DEBUG_UART_RX_CAPACITY 64U                         //½ÓÊÕ»º³å´óĞ¡£¬±£ÁôÒ»¸öÎ»ÖÃÇø·Ö¿ÕºÍÂú
+
+static uint8_t s_rx_byte;                                      //±£´æHAL±¾´Î½ÓÊÕµÄÒ»¸ö×Ö½Ú
+static volatile uint8_t s_rx_buffer[BSP_DEBUG_UART_RX_CAPACITY]; //±£´æÉĞÎ´±»Ö÷Ñ­»·È¡×ßµÄ×Ö·û
+static volatile uint16_t s_rx_write = 0U;                       //½ÓÊÕÖĞ¶ÏµÄĞ´ÈëÎ»ÖÃ
+static volatile uint16_t s_rx_read = 0U;                        //Ö÷Ñ­»·µÄ¶ÁÈ¡Î»ÖÃ
+static volatile bool s_rx_overflow = false;                    //true±íÊ¾ÊäÈë·¢Éú¶ªÊ§£¬false±íÊ¾Î´¼ÇÂ¼¶ªÊ§
 
 static uint8_t s_tx_buffer[BSP_DEBUG_UART_TX_CAPACITY];  //UART ¾²Ì¬·¢ËÍ»º³åÇø
 static volatile bool s_tx_busy = false;                  //UART ·¢ËÍÃ¦×´Ì¬±êÖ¾
+
 
 bool BSP_DebugUart_TryWrite(const char *text)             //³¢ÊÔÍ¨¹ı USART2 ·Ç×èÈû·¢ËÍ×Ö·û´®
 {
@@ -65,3 +73,49 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)   //UART ·¢ËÍÍê³É»Øµ÷º¯Ê
         s_tx_busy = false;                               //·¢ËÍÍê³É£¬»Ö¸´ UART ¿ÕÏĞ×´Ì¬
     }
 }
+
+
+bool BSP_DebugUart_StartReceive(void)                          //Æô¶¯USART2µ¥×Ö½ÚÖĞ¶Ï½ÓÊÕ
+{
+    return HAL_UART_Receive_IT(&huart2, &s_rx_byte, 1U) == HAL_OK;
+}
+
+
+
+
+int8_t BSP_DebugUart_Read(char *c)                              //¹©Ö÷Ñ­»·È¡³öÒ»¸ö×Ö·û
+{
+    int8_t result = 0;
+    uint32_t primask = __get_PRIMASK();                        //±£´æÔ­ÓĞÖĞ¶ÏÆÁ±Î×´Ì¬
+
+    __disable_irq();                                          //¶ÌÁÙ½çÇøÄÚ´¦Àí¶ÁÈ¡Î»ÖÃºÍ¶ªÊ§±êÖ¾
+
+    if (s_rx_overflow)
+    {
+        s_rx_read = s_rx_write;                               //¶ªÆúµ±Ç°»ıÑ¹µÄ²»ÍêÕûÊäÈë
+        s_rx_overflow = false;                                //Çå³ıÒÑ½»¸øÖ÷Ñ­»·´¦ÀíµÄ¶ªÊ§±êÖ¾
+        result = -1;                                         //Í¨ÖªºóĞøÊäÈë´¦Àí·ÅÆúµ±Ç°ÃüÁî
+    }
+    else if (s_rx_read != s_rx_write)
+    {
+        *c = (char)s_rx_buffer[s_rx_read];                     //È¡³öÒ»¸ö×Ö·û
+        s_rx_read = (uint16_t)((s_rx_read + 1U) % BSP_DEBUG_UART_RX_CAPACITY);
+        result = 1;
+    }
+
+    __set_PRIMASK(primask);                                    //»Ö¸´Ô­ÓĞÖĞ¶ÏÆÁ±Î×´Ì¬
+
+    return result;
+}
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)          //½ÓÊÕ´íÎóºó¼ÌĞø½ÓÊÕºóĞø×Ö·û
+{
+    if (huart == &huart2)
+    {
+        s_rx_overflow = true;                                 //Í¨ÖªÖ÷Ñ­»·µ±Ç°ÊäÈë¿ÉÄÜ²»ÍêÕû
+        __HAL_UART_CLEAR_OREFLAG(huart);                       //Çå³ı½ÓÊÕÒç³öµÈ½ÓÊÕ×´Ì¬±êÖ¾
+        (void)HAL_UART_Receive_IT(huart, &s_rx_byte, 1U);       //HALÍ£Ö¹½ÓÊÕÊ±ÖØĞÂÆô¶¯£¬ÈÔÔÚ½ÓÊÕÊ±·µ»ØÃ¦
+    }
+}
+
+

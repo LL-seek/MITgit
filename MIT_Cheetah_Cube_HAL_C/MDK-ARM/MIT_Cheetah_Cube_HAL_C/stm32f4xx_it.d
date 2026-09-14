@@ -26,6 +26,7 @@ mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h
+mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
@@ -45,3 +46,5 @@ mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../User/Common/math_ops.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: D:\Keil5\ARM\ARMCC\Bin\..\include\math.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../User/config/hw_config.h
 mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../User/MotorHW/pwm.h
+mit_cheetah_cube_hal_c\stm32f4xx_it.o: ../User/BSP/bsp_emergency_stop.h
+mit_cheetah_cube_hal_c\stm32f4xx_it.o: ..\User\Protocol\app.h

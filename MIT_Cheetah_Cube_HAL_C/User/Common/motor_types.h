@@ -81,7 +81,7 @@ typedef struct
     float v_v;                         //V相电压，V
     float v_w;                         //W相电压，V
 
-    float k_d;                         //d轴电流环比例系数
+			float k_d;                         //d轴电流环比例系数
     float k_q;                         //q轴电流环比例系数
     float ki_d;                        //d轴电流环积分系数
     float ki_q;                        //q轴电流环积分系数
@@ -99,6 +99,7 @@ typedef struct
     float i_q_ref_filt;                //滤波后的q轴电流参考值，A
 
     uint32_t loop_count;               //FOC控制循环计数
+    volatile uint32_t timeout;         //CAN超时计数，单位为25微秒控制周期
 
     float v_ref;                       //dq电压矢量幅值，V
     float fw_int;                      //弱磁控制积分项，A

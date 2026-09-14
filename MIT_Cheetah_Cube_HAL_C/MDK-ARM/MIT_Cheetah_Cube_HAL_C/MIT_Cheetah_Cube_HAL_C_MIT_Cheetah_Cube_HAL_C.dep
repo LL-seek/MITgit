@@ -1,10 +1,10 @@
 Dependencies for Project 'MIT_Cheetah_Cube_HAL_C', Target 'MIT_Cheetah_Cube_HAL_C': (DO NOT MODIFY !)
 CompilerVersion: 5060528::V5.06 update 5 (build 528)::.\ARMCC
-F (startup_stm32f446xx.s)(0x6A9E7179)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include--pd "__UVISION_VERSION SETA 543" --pd "STM32F446xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f446xx.lst --xref -o mit_cheetah_cube_hal_c\startup_stm32f446xx.o --depend mit_cheetah_cube_hal_c\startup_stm32f446xx.d)
-F (../Core/Src/main.c)(0x6AA40D00)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\main.o --omf_browse mit_cheetah_cube_hal_c\main.crf --depend mit_cheetah_cube_hal_c\main.d)
+F (startup_stm32f446xx.s)(0x6AA556BE)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include--pd "__UVISION_VERSION SETA 543" --pd "STM32F446xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f446xx.lst --xref -o mit_cheetah_cube_hal_c\startup_stm32f446xx.o --depend mit_cheetah_cube_hal_c\startup_stm32f446xx.d)
+F (../Core/Src/main.c)(0x6AA7A39F)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\main.o --omf_browse mit_cheetah_cube_hal_c\main.crf --depend mit_cheetah_cube_hal_c\main.d)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -28,6 +28,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -38,6 +39,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
 I (../Core/Inc/adc.h)(0x6A9BC33B)
+I (../Core/Inc/can.h)(0x6AA514F6)
 I (../Core/Inc/spi.h)(0x6A9E7176)
 I (../Core/Inc/tim.h)(0x6A9A404D)
 I (../Core/Inc/usart.h)(0x6A91A348)
@@ -46,18 +48,21 @@ I (../User/BSP/bsp_safe_gpio.h)(0x6A915F8D)
 I (../User/BSP/bsp_time.h)(0x6A91928B)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (../User/BSP/bsp_emergency_stop.h)(0x6A93BB44)
-I (../User/BSP/bsp_debug_uart.h)(0x6A93B216)
+I (../User/BSP/bsp_debug_uart.h)(0x6AA7A3AC)
 I (../User/Device/DRV.h)(0x6A9D32DF)
 I (../User/MotorHW/adc_sample.h)(0x6A9D6E85)
-I (../User/Common/motor_types.h)(0x6AA22CDF)
+I (../User/Common/motor_types.h)(0x6AA763BD)
 I (../User/Device/PositionSensor.h)(0x6AA03512)
-I (../User/Control/foc.h)(0x6AA405E7)
+I (../User/Control/foc.h)(0x6AA421CF)
 I (../User/config/motor_config.h)(0x6AA2A885)
-F (../Core/Src/gpio.c)(0x6A9BC1C9)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\gpio.o --omf_browse mit_cheetah_cube_hal_c\gpio.crf --depend mit_cheetah_cube_hal_c\gpio.d)
+I (../User/BSP/bsp_can.h)(0x6AA567FE)
+I (..\User\Protocol\CAN_com.h)(0x6AA57B48)
+I (..\User\Protocol\app.h)(0x6AA753AF)
+F (../Core/Src/gpio.c)(0x6AA514F5)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\gpio.o --omf_browse mit_cheetah_cube_hal_c\gpio.crf --depend mit_cheetah_cube_hal_c\gpio.d)
 I (../Core/Inc/gpio.h)(0x6A90F29D)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -81,6 +86,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -90,11 +96,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Core/Src/adc.c)(0x6A9BC56A)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\adc.o --omf_browse mit_cheetah_cube_hal_c\adc.crf --depend mit_cheetah_cube_hal_c\adc.d)
+F (../Core/Src/adc.c)(0x6A9BC56A)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\adc.o --omf_browse mit_cheetah_cube_hal_c\adc.crf --depend mit_cheetah_cube_hal_c\adc.d)
 I (../Core/Inc/adc.h)(0x6A9BC33B)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -118,6 +124,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -127,11 +134,49 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Core/Src/spi.c)(0x6A9E7176)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\spi.o --omf_browse mit_cheetah_cube_hal_c\spi.crf --depend mit_cheetah_cube_hal_c\spi.d)
+F (../Core/Src/can.c)(0x6AA556BC)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\can.o --omf_browse mit_cheetah_cube_hal_c\can.crf --depend mit_cheetah_cube_hal_c\can.d)
+I (../Core/Inc/can.h)(0x6AA514F6)
+I (../Core/Inc/main.h)(0x6A9151B4)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x6A90F857)
+I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x6A90F857)
+I (D:\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
+F (../Core/Src/spi.c)(0x6A9E7176)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\spi.o --omf_browse mit_cheetah_cube_hal_c\spi.crf --depend mit_cheetah_cube_hal_c\spi.d)
 I (../Core/Inc/spi.h)(0x6A9E7176)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -155,6 +200,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -164,11 +210,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Core/Src/tim.c)(0x6A9A408F)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\tim.o --omf_browse mit_cheetah_cube_hal_c\tim.crf --depend mit_cheetah_cube_hal_c\tim.d)
+F (../Core/Src/tim.c)(0x6A9A408F)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\tim.o --omf_browse mit_cheetah_cube_hal_c\tim.crf --depend mit_cheetah_cube_hal_c\tim.d)
 I (../Core/Inc/tim.h)(0x6A9A404D)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -192,6 +238,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -201,11 +248,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Core/Src/usart.c)(0x6A91A7D3)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\usart.o --omf_browse mit_cheetah_cube_hal_c\usart.crf --depend mit_cheetah_cube_hal_c\usart.d)
+F (../Core/Src/usart.c)(0x6A91A7D3)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\usart.o --omf_browse mit_cheetah_cube_hal_c\usart.crf --depend mit_cheetah_cube_hal_c\usart.d)
 I (../Core/Inc/usart.h)(0x6A91A348)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -229,6 +276,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -238,10 +286,10 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Core/Src/stm32f4xx_it.c)(0x6AA40D44)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_it.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_it.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_it.d)
+F (../Core/Src/stm32f4xx_it.c)(0x6AA763BD)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_it.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_it.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_it.d)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -265,6 +313,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -274,9 +323,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_it.h)(0x6A9A404D)
-I (../User/Control/foc.h)(0x6AA405E7)
-I (../User/Common/motor_types.h)(0x6AA22CDF)
+I (../Core/Inc/stm32f4xx_it.h)(0x6AA556BC)
+I (../User/Control/foc.h)(0x6AA421CF)
+I (../User/Common/motor_types.h)(0x6AA763BD)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (../User/MotorHW/adc_sample.h)(0x6A9D6E85)
 I (../User/Device/PositionSensor.h)(0x6AA03512)
@@ -284,10 +333,12 @@ I (../User/Common/math_ops.h)(0x6A959C22)
 I (D:\Keil5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (../User/config/hw_config.h)(0x6AA28DE1)
 I (../User/MotorHW/pwm.h)(0x6A9AFD7A)
-F (../Core/Src/stm32f4xx_hal_msp.c)(0x6A90F29D)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_msp.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_msp.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_msp.d)
+I (../User/BSP/bsp_emergency_stop.h)(0x6A93BB44)
+I (..\User\Protocol\app.h)(0x6AA753AF)
+F (../Core/Src/stm32f4xx_hal_msp.c)(0x6A90F29D)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_msp.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_msp.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_msp.d)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -311,6 +362,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -320,9 +372,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_adc.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_adc.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_adc.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_adc.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_adc.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_adc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -346,6 +398,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -355,9 +408,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_adc_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_adc_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_adc_ex.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_adc_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_adc_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_adc_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -381,6 +434,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -390,10 +444,10 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_ll_adc.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_ll_adc.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_ll_adc.d)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_ll_adc.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_ll_adc.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_ll_adc.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -417,6 +471,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -426,9 +481,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc_ex.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_rcc_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -452,6 +507,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -461,9 +517,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_flash.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_flash.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_flash.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_flash.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_flash.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_flash.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -487,6 +543,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -496,9 +553,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ex.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -522,6 +579,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -531,9 +589,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ramfunc.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ramfunc.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ramfunc.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ramfunc.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ramfunc.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_flash_ramfunc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -557,6 +615,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -566,9 +625,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_gpio.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_gpio.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_gpio.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_gpio.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_gpio.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_gpio.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -592,6 +651,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -601,9 +661,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_dma_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_dma_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_dma_ex.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_dma_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_dma_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_dma_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -627,6 +687,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -636,9 +697,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_dma.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_dma.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_dma.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_dma.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_dma.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_dma.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -662,6 +723,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -671,9 +733,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -697,6 +759,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -706,9 +769,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr_ex.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_pwr_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -732,6 +795,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -741,9 +805,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_cortex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_cortex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_cortex.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_cortex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_cortex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_cortex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -767,6 +831,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -776,9 +841,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -802,6 +867,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -811,9 +877,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_exti.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_exti.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_exti.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_exti.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_exti.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_exti.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -837,6 +903,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -846,9 +913,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_spi.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_spi.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_spi.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_can.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_can.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_can.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -872,6 +939,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -881,9 +949,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_tim.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_tim.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_tim.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_spi.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_spi.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_spi.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -907,6 +975,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -916,9 +985,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_tim_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_tim_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_tim_ex.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_tim.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_tim.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_tim.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -942,6 +1011,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -951,9 +1021,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_uart.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_uart.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_uart.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_tim_ex.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_tim_ex.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_tim_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -977,6 +1047,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -986,7 +1057,43 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (../Core/Src/system_stm32f4xx.c)(0x6A90F857)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\system_stm32f4xx.o --omf_browse mit_cheetah_cube_hal_c\system_stm32f4xx.crf --depend mit_cheetah_cube_hal_c\system_stm32f4xx.d)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c)(0x6A90F856)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\stm32f4xx_hal_uart.o --omf_browse mit_cheetah_cube_hal_c\stm32f4xx_hal_uart.crf --depend mit_cheetah_cube_hal_c\stm32f4xx_hal_uart.d)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x6A90F857)
+I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x6A90F857)
+I (D:\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
+F (../Core/Src/system_stm32f4xx.c)(0x6A90F857)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\system_stm32f4xx.o --omf_browse mit_cheetah_cube_hal_c\system_stm32f4xx.crf --depend mit_cheetah_cube_hal_c\system_stm32f4xx.d)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h)(0x6A90F857)
 I (../Drivers/CMSIS/Include/core_cm4.h)(0x6A90F857)
@@ -997,7 +1104,7 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x6A90F857)
 I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x6A90F857)
@@ -1012,6 +1119,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -1021,11 +1129,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (..\User\BSP\bsp_safe_gpio.c)(0x6A917E88)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_safe_gpio.o --omf_browse mit_cheetah_cube_hal_c\bsp_safe_gpio.crf --depend mit_cheetah_cube_hal_c\bsp_safe_gpio.d)
+F (..\User\BSP\bsp_safe_gpio.c)(0x6A917E88)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_safe_gpio.o --omf_browse mit_cheetah_cube_hal_c\bsp_safe_gpio.crf --depend mit_cheetah_cube_hal_c\bsp_safe_gpio.d)
 I (..\User\BSP\bsp_safe_gpio.h)(0x6A915F8D)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -1049,6 +1157,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -1058,14 +1167,14 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (..\User\BSP\bsp_time.c)(0x6A91928B)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_time.o --omf_browse mit_cheetah_cube_hal_c\bsp_time.crf --depend mit_cheetah_cube_hal_c\bsp_time.d)
+F (..\User\BSP\bsp_time.c)(0x6A91928B)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_time.o --omf_browse mit_cheetah_cube_hal_c\bsp_time.crf --depend mit_cheetah_cube_hal_c\bsp_time.d)
 I (..\User\BSP\bsp_time.h)(0x6A91928B)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (../Core/Inc/tim.h)(0x6A9A404D)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -1088,6 +1197,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -1097,19 +1207,19 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (..\User\BSP\bsp_debug_uart.c)(0x6A93B121)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_debug_uart.o --omf_browse mit_cheetah_cube_hal_c\bsp_debug_uart.crf --depend mit_cheetah_cube_hal_c\bsp_debug_uart.d)
-I (..\User\BSP\bsp_debug_uart.h)(0x6A93B216)
+F (..\User\BSP\bsp_debug_uart.c)(0x6AA7A3A4)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_debug_uart.o --omf_browse mit_cheetah_cube_hal_c\bsp_debug_uart.crf --depend mit_cheetah_cube_hal_c\bsp_debug_uart.d)
+I (..\User\BSP\bsp_debug_uart.h)(0x6AA7A3AC)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
+I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (../Core/Inc/usart.h)(0x6A91A348)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h)(0x6A90F857)
 I (../Drivers/CMSIS/Include/core_cm4.h)(0x6A90F857)
-I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (../Drivers/CMSIS/Include/cmsis_version.h)(0x6A90F857)
 I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x6A90F857)
 I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x6A90F857)
@@ -1127,6 +1237,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -1136,14 +1247,14 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (..\User\BSP\bsp_emergency_stop.c)(0x6A93BC92)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_emergency_stop.o --omf_browse mit_cheetah_cube_hal_c\bsp_emergency_stop.crf --depend mit_cheetah_cube_hal_c\bsp_emergency_stop.d)
+F (..\User\BSP\bsp_emergency_stop.c)(0x6A93BC92)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_emergency_stop.o --omf_browse mit_cheetah_cube_hal_c\bsp_emergency_stop.crf --depend mit_cheetah_cube_hal_c\bsp_emergency_stop.d)
 I (..\User\BSP\bsp_emergency_stop.h)(0x6A93BB44)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (..\User\BSP\bsp_safe_gpio.h)(0x6A915F8D)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -1166,6 +1277,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -1175,27 +1287,66 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-F (..\User\Common\motor_types.c)(0x6A956435)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\motor_types.o --omf_browse mit_cheetah_cube_hal_c\motor_types.crf --depend mit_cheetah_cube_hal_c\motor_types.d)
-I (..\User\Common\motor_types.h)(0x6AA22CDF)
+F (..\User\BSP\bsp_can.c)(0x6AA560B7)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\bsp_can.o --omf_browse mit_cheetah_cube_hal_c\bsp_can.crf --depend mit_cheetah_cube_hal_c\bsp_can.d)
+I (..\User\BSP\bsp_can.h)(0x6AA567FE)
+I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x6A90F857)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x6A90F857)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x6A90F857)
+I (D:\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
+I (../Core/Inc/can.h)(0x6AA514F6)
+I (../Core/Inc/main.h)(0x6A9151B4)
+F (..\User\Common\motor_types.c)(0x6A956435)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\motor_types.o --omf_browse mit_cheetah_cube_hal_c\motor_types.crf --depend mit_cheetah_cube_hal_c\motor_types.d)
+I (..\User\Common\motor_types.h)(0x6AA763BD)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
-F (..\User\Common\math_ops.c)(0x6A964E03)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\math_ops.o --omf_browse mit_cheetah_cube_hal_c\math_ops.crf --depend mit_cheetah_cube_hal_c\math_ops.d)
+F (..\User\Common\math_ops.c)(0x6A964E03)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\math_ops.o --omf_browse mit_cheetah_cube_hal_c\math_ops.crf --depend mit_cheetah_cube_hal_c\math_ops.d)
 I (..\User\Common\math_ops.h)(0x6A959C22)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\math.h)(0x588B8344)
-F (..\User\Common\LUT.c)(0x6A9671E2)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\lut.o --omf_browse mit_cheetah_cube_hal_c\lut.crf --depend mit_cheetah_cube_hal_c\lut.d)
+F (..\User\Common\LUT.c)(0x6A9671E2)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\lut.o --omf_browse mit_cheetah_cube_hal_c\lut.crf --depend mit_cheetah_cube_hal_c\lut.d)
 I (..\User\Common\LUT.h)(0x6A9671E2)
-F (..\User\Common\FastMath.c)(0x6A96E266)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\fastmath.o --omf_browse mit_cheetah_cube_hal_c\fastmath.crf --depend mit_cheetah_cube_hal_c\fastmath.d)
+F (..\User\Common\FastMath.c)(0x6A96E266)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\fastmath.o --omf_browse mit_cheetah_cube_hal_c\fastmath.crf --depend mit_cheetah_cube_hal_c\fastmath.d)
 I (..\User\Common\FastMath.h)(0x6A96624B)
 I (..\User\Common\LUT.h)(0x6A9671E2)
-F (..\User\config\hw_config.c)(0x6A958DF6)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\hw_config.o --omf_browse mit_cheetah_cube_hal_c\hw_config.crf --depend mit_cheetah_cube_hal_c\hw_config.d)
+F (..\User\config\hw_config.c)(0x6A958DF6)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\hw_config.o --omf_browse mit_cheetah_cube_hal_c\hw_config.crf --depend mit_cheetah_cube_hal_c\hw_config.d)
 I (..\User\config\hw_config.h)(0x6AA28DE1)
-F (..\User\config\motor_config.c)(0x6A959077)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\motor_config.o --omf_browse mit_cheetah_cube_hal_c\motor_config.crf --depend mit_cheetah_cube_hal_c\motor_config.d)
+F (..\User\config\motor_config.c)(0x6A959077)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\motor_config.o --omf_browse mit_cheetah_cube_hal_c\motor_config.crf --depend mit_cheetah_cube_hal_c\motor_config.d)
 I (..\User\config\motor_config.h)(0x6AA2A885)
-F (..\User\Control\foc.c)(0x6AA41FAF)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\foc.o --omf_browse mit_cheetah_cube_hal_c\foc.crf --depend mit_cheetah_cube_hal_c\foc.d)
-I (..\User\Control\foc.h)(0x6AA405E7)
-I (../User/Common/motor_types.h)(0x6AA22CDF)
+F (..\User\Control\foc.c)(0x6AA4221F)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\foc.o --omf_browse mit_cheetah_cube_hal_c\foc.crf --depend mit_cheetah_cube_hal_c\foc.d)
+I (..\User\Control\foc.h)(0x6AA421CF)
+I (../User/Common/motor_types.h)(0x6AA763BD)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
@@ -1204,18 +1355,20 @@ I (../User/Common/FastMath.h)(0x6A96624B)
 I (../User/config/hw_config.h)(0x6AA28DE1)
 I (../User/Common/math_ops.h)(0x6A959C22)
 I (../User/config/motor_config.h)(0x6AA2A885)
-F (..\User\Protocol\CAN_com.c)(0x6A970DB8)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\can_com.o --omf_browse mit_cheetah_cube_hal_c\can_com.crf --depend mit_cheetah_cube_hal_c\can_com.d)
-I (..\User\Protocol\CAN_com.h)(0x6A970414)
+F (..\User\Protocol\CAN_com.c)(0x6AA57F83)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\can_com.o --omf_browse mit_cheetah_cube_hal_c\can_com.crf --depend mit_cheetah_cube_hal_c\can_com.d)
+I (..\User\Protocol\CAN_com.h)(0x6AA57B48)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../User/Common/motor_types.h)(0x6AA22CDF)
+I (../User/Common/motor_types.h)(0x6AA763BD)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (../User/Common/math_ops.h)(0x6A959C22)
-F (..\User\Device\DRV.c)(0x6A99753B)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\drv.o --omf_browse mit_cheetah_cube_hal_c\drv.crf --depend mit_cheetah_cube_hal_c\drv.d)
+F (..\User\Protocol\app.c)(0x6AA753AF)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\app.o --omf_browse mit_cheetah_cube_hal_c\app.crf --depend mit_cheetah_cube_hal_c\app.d)
+I (..\User\Protocol\app.h)(0x6AA753AF)
+F (..\User\Device\DRV.c)(0x6A99753B)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\drv.o --omf_browse mit_cheetah_cube_hal_c\drv.crf --depend mit_cheetah_cube_hal_c\drv.d)
 I (..\User\Device\DRV.h)(0x6A9D32DF)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -1239,6 +1392,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -1251,10 +1405,10 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (../Core/Inc/spi.h)(0x6A9E7176)
 I (../Core/Inc/main.h)(0x6A9151B4)
-F (..\User\Device\PositionSensor.c)(0x6AA03512)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\positionsensor.o --omf_browse mit_cheetah_cube_hal_c\positionsensor.crf --depend mit_cheetah_cube_hal_c\positionsensor.d)
+F (..\User\Device\PositionSensor.c)(0x6AA03512)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\positionsensor.o --omf_browse mit_cheetah_cube_hal_c\positionsensor.crf --depend mit_cheetah_cube_hal_c\positionsensor.d)
 I (..\User\Device\PositionSensor.h)(0x6AA03512)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -1278,6 +1432,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -1287,7 +1442,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x6A90F857)
-I (../User/Common/motor_types.h)(0x6AA22CDF)
+I (../User/Common/motor_types.h)(0x6AA763BD)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (../Core/Inc/spi.h)(0x6A9E7176)
 I (../Core/Inc/main.h)(0x6A9151B4)
@@ -1295,11 +1450,11 @@ I (../User/BSP/bsp_time.h)(0x6A91928B)
 I (D:\Keil5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (../User/Common/math_ops.h)(0x6A959C22)
 I (../User/config/motor_config.h)(0x6AA2A885)
-F (..\User\MotorHW\pwm.c)(0x6A9D47BA)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\pwm.o --omf_browse mit_cheetah_cube_hal_c\pwm.crf --depend mit_cheetah_cube_hal_c\pwm.d)
+F (..\User\MotorHW\pwm.c)(0x6A9D47BA)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\pwm.o --omf_browse mit_cheetah_cube_hal_c\pwm.crf --depend mit_cheetah_cube_hal_c\pwm.d)
 I (..\User\MotorHW\pwm.h)(0x6A9AFD7A)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -1322,6 +1477,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)
@@ -1336,16 +1492,16 @@ I (../Core/Inc/main.h)(0x6A9151B4)
 I (../User/config/hw_config.h)(0x6AA28DE1)
 I (../User/Device/DRV.h)(0x6A9D32DF)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
-F (..\User\MotorHW\adc_sample.c)(0x6A9E5DC2)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\adc_sample.o --omf_browse mit_cheetah_cube_hal_c\adc_sample.crf --depend mit_cheetah_cube_hal_c\adc_sample.d)
+F (..\User\MotorHW\adc_sample.c)(0x6A9E5DC2)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/BSP -I ../User/Common -I ../User/config -I ../User/Control -I ../User/Device -I ../User/MotorHW -I ..\User\Protocol-I.\RTE\_MIT_Cheetah_Cube_HAL_C-ID:\Keil5\ARM\CMSIS\6.3.0\CMSIS\Core\Include-D__UVISION_VERSION="543" -DSTM32F446xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F446xx-o mit_cheetah_cube_hal_c\adc_sample.o --omf_browse mit_cheetah_cube_hal_c\adc_sample.crf --depend mit_cheetah_cube_hal_c\adc_sample.d)
 I (..\User\MotorHW\adc_sample.h)(0x6A9D6E85)
-I (../User/Common/motor_types.h)(0x6AA22CDF)
+I (../User/Common/motor_types.h)(0x6AA763BD)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (D:\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (../Core/Inc/adc.h)(0x6A9BC33B)
 I (../Core/Inc/main.h)(0x6A9151B4)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x6A90F857)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A9BC1CA)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6AA514F7)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x6A90F857)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x6A90F857)
@@ -1367,6 +1523,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x6A90F857)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x6A90F857)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x6A90F857)

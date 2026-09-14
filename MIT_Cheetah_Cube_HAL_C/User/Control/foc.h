@@ -22,4 +22,6 @@ void init_controller_params(ControllerStruct *controller);  //初始化原工程电流环
 
 void linearize_dtc(float *dtc);                     //对dq归一化电压分量进行原工程的死区补偿
 
+bool FOC_Step(ControllerStruct *controller,const FocInput *input,FocCommand *command,const MotorParameters *parameters,FocOutput *output);                
+
 #endif

@@ -1,6 +1,7 @@
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ..\User\BSP\bsp_debug_uart.c
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ..\User\BSP\bsp_debug_uart.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+mit_cheetah_cube_hal_c\bsp_debug_uart.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Core/Inc/usart.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Core/Inc/main.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
@@ -10,7 +11,6 @@ mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/CMSIS/Include/core_cm4.h
-mit_cheetah_cube_hal_c\bsp_debug_uart.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/CMSIS/Include/cmsis_version.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -29,6 +29,7 @@ mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h
+mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 mit_cheetah_cube_hal_c\bsp_debug_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
