@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F446xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/BSP;../User/Common;../User/config;../User/Control;../User/Device;../User/MotorHW;..\User\Protocol</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/BSP;../User/Common;../User/config;../User/Control;../User/Device;../User/MotorHW;..\User\Protocol;..\User\Storage</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1346,6 +1346,21 @@
               <FileName>adc_sample.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\MotorHW\adc_sample.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>User_Storge</GroupName>
+          <Files>
+            <File>
+              <FileName>PreferenceWriter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Storage\PreferenceWriter.c</FilePath>
+            </File>
+            <File>
+              <FileName>FlashWriter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Storage\FlashWriter.c</FilePath>
             </File>
           </Files>
         </Group>

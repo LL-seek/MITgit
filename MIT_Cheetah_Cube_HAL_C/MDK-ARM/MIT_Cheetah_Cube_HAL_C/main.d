@@ -56,3 +56,6 @@ mit_cheetah_cube_hal_c\main.o: ../User/config/motor_config.h
 mit_cheetah_cube_hal_c\main.o: ../User/BSP/bsp_can.h
 mit_cheetah_cube_hal_c\main.o: ..\User\Protocol\CAN_com.h
 mit_cheetah_cube_hal_c\main.o: ..\User\Protocol\app.h
+mit_cheetah_cube_hal_c\main.o: ..\User\Storage\PreferenceWriter.h
+mit_cheetah_cube_hal_c\main.o: ..\User\Storage\FlashWriter.h
+mit_cheetah_cube_hal_c\main.o: ../User/MotorHW/pwm.h

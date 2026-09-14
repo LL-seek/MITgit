@@ -39,6 +39,8 @@
 #include "bsp_can.h"       
 #include "CAN_com.h"
 #include "app.h"
+#include "PreferenceWriter.h"    
+#include "pwm.h"                                
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,7 +63,12 @@
 /* USER CODE BEGIN PV */
 ControllerStruct controller;                       //保存FOC控制器运行状态
 ObserverStruct observer;                           //保存电机温度和相电阻观测状态
-MotorParameters motor_parameters;                  //保存电机参数
+MotorParameters motor_parameters =                 //保存电机参数，并设置启动初值
+{
+    .I_BW   = 1000.0f,                             //沿用原工程的电流环带宽默认值，Hz
+    .I_MAX  = I_MAX_MOTOR,                         //沿用原工程的最大电流默认值，A
+    .CAN_ID = 1                                    //沿用原工程的本机CAN节点默认ID
+};
 PositionSnapshot position_sample;                  //保存编码器采样结果
 FocCommand command = {0};                          //保存控制命令，启动时目标值、增益和前馈扭矩全部为零
 /* USER CODE END PV */
@@ -205,7 +212,9 @@ int main(void)
   MX_SPI3_Init();
   MX_CAN1_Init();
   /* USER CODE BEGIN 2 */
-	motor_parameters.CAN_ID = 1;                          //当前采用原工程无有效保存参数时的默认电机ID
+	
+	PreferenceWriter_Load(&motor_parameters);      //先从Flash读取旧参数并转换到参数结构体
+  PreferenceWriter_Validate(&motor_parameters);  //再按原工程逻辑处理默认值和电流限幅
 
   if (BSP_CAN_SetFilter((uint16_t)motor_parameters.CAN_ID) != HAL_OK) //启动CAN前配置本机ID过滤器
   {
@@ -234,7 +243,6 @@ int main(void)
 	reset_foc(&controller);                            //启动时复位原有FOC软件状态
 	controller.v_bus = V_NOMINAL;                      //沿用原工程48V的母线电压滤波初值
   reset_observer(&observer);                         //启动时设置观测器温度和相电阻初值
-	motor_parameters.I_MAX = I_MAX_MOTOR;              //使用原工程默认最大电流，单位A
 	init_controller_params(&controller);               //启动控制中断前设置电流环增益
 	
 	Init_ADC();
@@ -287,6 +295,66 @@ BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
     {
        onMsgReceived(&rxMsg);                              //在主循环中识别命令并投递App请求
     }
+		
+		if ((can_id_request >= 0) || (can_master_request >= 0))
+{
+    HAL_StatusTypeDef status;                          //保存解锁、擦除和写入结果
+    HAL_StatusTypeDef close_status;                    //单独保存Flash上锁结果
+
+    if (PWM_Stop() != HAL_OK)                          //进入COAST，停止三相PWM和TIM1更新中断
+    {
+        Error_Handler();                              //停止输出失败时，沿用现有错误处理
+    }
+
+    state = REST_MODE;                                //保存期间退出电机模式
+    can_mode_request = -1;                            //清除保存前遗留的模式切换请求
+    command = (FocCommand){0};                         //清零原有控制命令
+    reset_foc(&controller);                           //清除电流参考和控制器积分等运行状态
+
+    if (can_id_request >= 0)
+    {
+        motor_parameters.CAN_ID = can_id_request;      //把待设置的本机ID写入RAM参数
+    }
+
+    if (can_master_request >= 0)
+    {
+        motor_parameters.CAN_MASTER = can_master_request; //把待设置的主站ID写入RAM参数
+    }
+
+    status = FlashWriter_Open();                      //解锁Flash并擦除Sector 6
+
+    if (status == HAL_OK)
+    {
+        status = PreferenceWriter_Flush(&motor_parameters); //按旧布局写回全部已映射参数
+    }
+
+    close_status = FlashWriter_Close();               //无论擦写成功或失败，都执行上锁
+
+    if ((status != HAL_OK) || (close_status != HAL_OK))
+    {
+        Error_Handler();                              //保存失败时保持停止，沿用现有错误处理
+    }
+
+    PreferenceWriter_Load(&motor_parameters);         //保存成功后，沿用原工程重新加载参数
+
+    if (can_id_request >= 0)
+    {
+        if (BSP_CAN_SetFilter((uint16_t)motor_parameters.CAN_ID) != HAL_OK)
+        {
+            Error_Handler();                          //更新本机ID过滤器失败时，沿用现有错误处理
+        }
+    }
+
+    can_id_request = -1;                              //清除已处理的本机ID请求，避免重复擦写
+    can_master_request = -1;                          //清除已处理的主站ID请求，避免重复擦写
+
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);     //恢复周期中断前清除更新标志
+
+    if (HAL_TIM_Base_Start_IT(&htim1) != HAL_OK)        //恢复周期中断，使采样和反馈继续更新
+    {
+        Error_Handler();                              //恢复失败时，沿用现有错误处理
+    }
+}
   }
   /* USER CODE END 3 */
 }

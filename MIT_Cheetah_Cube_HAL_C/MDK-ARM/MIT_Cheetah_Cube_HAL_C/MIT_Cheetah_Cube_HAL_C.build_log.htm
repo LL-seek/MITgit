@@ -22,12 +22,33 @@ Dialog DLL:      TCM.DLL V1.56.6.0
  
 <h2>Project:</h2>
 C:\Users\l3098\OneDrive\Desktop\MITgit\MIT_Cheetah_Cube_HAL_C\MDK-ARM\MIT_Cheetah_Cube_HAL_C.uvprojx
-Project File Date:  09/13/2026
+Project File Date:  09/14/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Keil5\ARM\ARMCC\Bin'
 Build target 'MIT_Cheetah_Cube_HAL_C'
-"MIT_Cheetah_Cube_HAL_C\MIT_Cheetah_Cube_HAL_C.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+../User/BSP/bsp_emergency_stop.h(27): warning:  #1-D: last line of file ends without a newline
+  #endif
+../User/MotorHW/adc_sample.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif                                                        
+../User/Device/PositionSensor.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+../User/config/motor_config.h(49): warning:  #1-D: last line of file ends without a newline
+  #endif                                                       
+../User/BSP/bsp_can.h(17): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\User\Protocol\CAN_com.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\User\Storage\FlashWriter.h(17): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\User\Storage\PreferenceWriter.h(20): warning:  #1-D: last line of file ends without a newline
+  		
+../Core/Src/main.c: 8 warnings, 0 errors
+linking...
+Program Size: Code=21160 RO-data=2576 RW-data=684 ZI-data=3428  
+FromELF: creating hex file...
+"MIT_Cheetah_Cube_HAL_C\MIT_Cheetah_Cube_HAL_C.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +71,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.2.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

@@ -124,28 +124,27 @@ typedef struct
 
 
 
-
-typedef struct                           //电机可持久化参数
+typedef struct                           //定义电机参数结构体
 {
-    float E_OFFSET;                     //编码器电角度偏置，rad
-    float M_OFFSET;                     //编码器机械零位偏置，rad
-    float I_BW;                         //电流环带宽，Hz
-    float I_MAX;                        //最大允许电流，A
-    float THETA_MIN;                    //最小位置限制，rad
-    float THETA_MAX;                    //最大位置限制，rad
-    float I_FW_MAX;                     //最大弱磁电流，A
+    float E_OFFSET;                      //编码器电角度偏置，rad，原工程默认0
+    float M_OFFSET;                      //编码器机械零位偏置，rad，原工程默认0
+    float I_BW;                          //电流环带宽，Hz，原设置范围100～2000，默认1000
+    float I_MAX;                         //最大电流，A，范围0～I_MAX_MOTOR，默认I_MAX_MOTOR
+    float THETA_MIN;                     //原工程保留的最小位置参数，rad，实际控制未使用
+    float THETA_MAX;                     //原工程保留的最大位置参数，rad，实际控制未使用
+    float I_FW_MAX;                      //最大弱磁电流，A，范围0～I_MAX_MOTOR，默认0
 
-    int32_t PHASE_ORDER;                //电机相序标志
-    int32_t CAN_ID;                     //电机CAN节点ID
-    int32_t CAN_MASTER;                 //CAN主站ID
-    int32_t CAN_TIMEOUT;                //CAN命令超时周期数
+    int32_t PHASE_ORDER;                 //相序标志，0交换V/W相，非0使用原相序，由标定确定
+    int32_t CAN_ID;                      //本机CAN节点ID，原菜单标注范围0～127，默认1
+    int32_t CAN_MASTER;                  //CAN主站ID，原菜单标注范围0～127，默认0
+    int32_t CAN_TIMEOUT;                 //CAN超时阈值，单位为25微秒控制周期，0表示关闭超时
 
-    int32_t reserved_int[2];            //旧参数索引4和5的保留字段
+    int32_t reserved_int[2];             //现有结构中的保留位置，对应旧整数数组下标4和5
 
-    int32_t RAW_OFFSET;                 //编码器1原始零位偏置
-    int32_t RAW2_OFFSET;                //编码器2原始零位偏置
-    int32_t ENCODER_LUT[128];           //编码器128项误差校正表
-} MotorParameters;   
+    int32_t RAW_OFFSET;                  //主编码器零位的原始角度计数，14位有效值为0～16383
+    int32_t RAW2_OFFSET;                 //副编码器零位的原始角度计数，14位有效值为0～16383
+    int32_t ENCODER_LUT[128];            //主编码器128项有符号角度修正值，单位为编码器计数
+} MotorParameters; 
 
 
 
