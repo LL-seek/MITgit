@@ -40,7 +40,12 @@
 #include "CAN_com.h"
 #include "app.h"
 #include "PreferenceWriter.h"    
-#include "pwm.h"                                
+#include "calibration.h"                              //接入原工程的相序判断和编码器标定
+#include "pwm.h"   
+#include <stdio.h>             
+#include <stdlib.h>                                    
+#include <math.h>                                      
+#include <string.h>                                    
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,16 +66,23 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-ControllerStruct controller;                       //保存FOC控制器运行状态
-ObserverStruct observer;                           //保存电机温度和相电阻观测状态
-MotorParameters motor_parameters =                 //保存电机参数，并设置启动初值
+ControllerStruct controller;                           //保存FOC控制器运行状态
+ObserverStruct observer;                               //保存观测器运行状态
+
+MotorParameters motor_parameters =                     //保存电机参数，并设置启动初值
 {
-    .I_BW   = 1000.0f,                             //沿用原工程的电流环带宽默认值，Hz
-    .I_MAX  = I_MAX_MOTOR,                         //沿用原工程的最大电流默认值，A
-    .CAN_ID = 1                                    //沿用原工程的本机CAN节点默认ID
+    .I_BW   = 1000.0f,                                  //电流环带宽默认值，Hz
+    .I_MAX  = I_MAX_MOTOR,                               //最大电流默认值，A
+    .CAN_ID = 1                                         //本机CAN节点默认ID
 };
-PositionSnapshot position_sample;                  //保存编码器采样结果
-FocCommand command = {0};                          //保存控制命令，启动时目标值、增益和前馈扭矩全部为零
+
+PositionSnapshot position_sample;                      //保存编码器采样结果
+FocCommand command = {0};                               //保存控制命令，启动时全部为零
+
+static char cmd_val[8] = {0};                           //沿用原工程的数值缓冲区
+static char cmd_id = 0;                                 //沿用原工程的参数前缀
+static char char_count = 0;                             //已接收字符数，包含一个参数前缀
+static int setup_save_pending = 0;                      //设置命令保存请求，0无请求，1等待保存
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -89,10 +101,7 @@ static void onMsgReceived(const CAN_RxFrame *rxMsg)       //在主循环中处�
     uint32_t txMailbox;                             //接收HAL选中的发送邮箱编号
     uint32_t primask;                               //保存读取反馈前的中断屏蔽状态
     float i_q_filt;                                 //暂存同一次读取的滤波q轴电流，A
-    if ((rxMsg->header.IDE != CAN_ID_STD)
-        || (rxMsg->header.RTR != CAN_RTR_DATA)
-        || (rxMsg->header.DLC != 8U)
-        || (rxMsg->header.StdId != (uint32_t)motor_parameters.CAN_ID))
+    if ((rxMsg->header.IDE != CAN_ID_STD)|| (rxMsg->header.RTR != CAN_RTR_DATA)|| (rxMsg->header.DLC != 8U)|| (rxMsg->header.StdId != (uint32_t)motor_parameters.CAN_ID))
     {
         return;                                         //仅解析发送给本机的标准8字节数据帧
     }
@@ -169,6 +178,175 @@ static void publish_command(const FocCommand *new_command) //发布一条完整�
 
     __DMB();                                              //保证命令写入排在恢复中断之前
     __set_PRIMASK(primask);                                //恢复进入前的中断屏蔽状态
+}
+
+static void serial_interrupt(void)                      //在主循环中处理原工程的串口模式命令
+{
+    char c;                                             //保存本次取出的字符
+                                             //保存本次取出的字符
+int8_t result = BSP_DebugUart_Read(&c);                  //读取字符和现有接收状态
+
+if (result <= 0)
+{
+    if (result < 0)                                    //已有接收接口报告输入丢失
+    {
+        char_count = 0;                                //放弃未收完整的命令
+        cmd_id = 0;
+        memset(cmd_val, 0, sizeof(cmd_val));
+    }
+
+    return;                                            //本次没有可处理的字符
+}
+
+    if (c == 27)                                        //沿用原工程，Esc在各模式下请求返回菜单
+    {
+        can_mode_request = REST_MODE;                   //记录退出当前模式的请求
+        return;
+    }
+
+    if (state == REST_MODE)                             //沿用原工程，仅在停止模式下接受菜单命令
+    {
+        switch (c)
+        {
+            case 'c':
+                can_mode_request = CALIBRATION_MODE;    //请求进入编码器标定模式
+                break;
+
+            case 'm':
+                can_mode_request = MOTOR_MODE;          //请求进入电机运行模式
+                break;
+
+            case 'e':
+                can_mode_request = ENCODER_MODE;        //请求进入编码器显示模式
+                break;
+
+            case 's':
+                can_mode_request = SETUP_MODE;          //请求进入参数设置模式
+                break;
+
+            case 'z':
+                can_zero_request = 1;                   //沿用原工程的置零请求
+                break;
+        }
+    }
+		else if (state == SETUP_MODE)                           //处理原工程的参数设置命令
+{
+    if (c == 13)                                       //沿用原工程，收到回车后解析参数
+    {
+        switch (cmd_id)
+        {
+            case 'b':
+                motor_parameters.I_BW =
+                    fmaxf(fminf((float)atof(cmd_val),
+                                2000.0f), 100.0f);      //沿用原工程的100～2000Hz范围
+                break;
+
+            case 'i':
+                motor_parameters.CAN_ID = atoi(cmd_val); //沿用原工程的本机ID转换
+                break;
+
+            case 'm':
+                motor_parameters.CAN_MASTER = atoi(cmd_val); //设置模式下m表示主站ID
+                break;
+
+            case 'l':
+                motor_parameters.I_MAX =
+                    fmaxf(fminf((float)atof(cmd_val),
+                                I_MAX_MOTOR), 0.0f);    //沿用原工程的最大电流限幅，A
+                break;
+
+            case 'f':
+                motor_parameters.I_FW_MAX =
+                    fmaxf(fminf((float)atof(cmd_val),
+                                I_MAX_MOTOR), 0.0f);    //沿用原工程的弱磁电流限幅，A
+                break;
+
+            case 't':
+                motor_parameters.CAN_TIMEOUT = atoi(cmd_val); //沿用原工程的超时周期数
+                break;
+
+            default:
+                BSP_DebugUart_TryWrite(
+                    "\r\nNot a valid command prefix\r\n"); //沿用原工程的未知前缀提示
+                break;
+        }
+
+        setup_save_pending = 1;                        //承接原工程回车后的保存和菜单刷新流程
+    }
+    else
+    {
+        if (char_count == 0)
+        {
+            cmd_id = c;                                //第一个字符作为参数前缀
+            char_count = 1;
+        }
+        else if (char_count < sizeof(cmd_val))
+        {
+            cmd_val[char_count - 1] = c;                //后续字符写入数值缓冲区
+            cmd_val[char_count] = '\0';                 //始终保留字符串结束符
+            char_count++;
+        }
+        else
+        {
+            cmd_id = 0;                                //本条输入过长，不使用截断后的数值修改参数
+        }
+
+        char echo[2] = {c, '\0'};                       //将当前字符组成字符串
+        BSP_DebugUart_TryWrite(echo);                   //通过现有串口接口回显输入
+    }
+}
+}
+
+static void enter_setup_state(void)                     //执行原工程参数设置模式的入口动作
+{
+    char text[128];                                    //保存本次显示的六个参数及输入提示
+	  char_count = 0;                                        //开始接收下一条完整命令
+    cmd_id = 0;
+    memset(cmd_val, 0, sizeof(cmd_val));                     //清除上一条命令的数值
+
+    if (!zero_current(&controller.adc1_offset,
+                      &controller.adc2_offset))         //保留原工程进入设置模式时的电流零偏采集
+    {
+        Error_Handler();                               //采集失败时沿用现有错误处理
+    }
+
+    snprintf(text, sizeof(text),                       //将当前参数组合成一次串口输出
+             "\r\nConfiguration Options\r\n"
+             "b=%.1f Hz i=%ld m=%ld\r\n"
+             "l=%.1f A f=%.1f A t=%ld cycles\r\n"
+             "prefix+value+Enter; Esc=menu\r\n",
+             (double)motor_parameters.I_BW,            //电流环带宽，Hz
+             (long)motor_parameters.CAN_ID,             //本机CAN ID
+             (long)motor_parameters.CAN_MASTER,         //主站CAN ID
+             (double)motor_parameters.I_MAX,            //最大电流，A
+             (double)motor_parameters.I_FW_MAX,         //最大弱磁电流，A
+             (long)motor_parameters.CAN_TIMEOUT);       //CAN超时阈值，单位为控制周期
+
+    BSP_DebugUart_TryWrite(text);                       //通过现有非阻塞串口接口发送参数
+}
+
+static void print_encoder(void)
+{
+    static uint32_t last_print = 0U;                    //记录上次显示时间，单位 ms
+    uint32_t now = HAL_GetTick();                       //读取当前毫秒计时
+    float theta_mech;                                  //保存本次显示的输出轴机械角度，单位 rad
+    char text[96];                                     //保存原工程的两行显示内容
+
+    if ((uint32_t)(now - last_print) < 500U)             //保持原工程约 500 ms 的显示间隔
+    {
+        return;
+    }
+
+    last_print = now;
+    theta_mech = position_sample.theta_mech;            //读取已有周期采样结果
+
+    snprintf(text, sizeof(text),
+             "Mechanical Angle_GR:%f\r\n"
+             "theta_mech:%f\r\n",
+             (double)theta_mech,
+             (double)theta_mech);                       //原工程这两行对应同一个机械角度
+
+    BSP_DebugUart_TryWrite(text);                       //通过现有串口接口输出
 }
 /* USER CODE END 0 */
 
@@ -295,9 +473,11 @@ BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
     {
        onMsgReceived(&rxMsg);                              //在主循环中识别命令并投递App请求
     }
-		
-		if ((can_id_request >= 0) || (can_master_request >= 0))
-{
+		serial_interrupt();                                    //处理串口字符并记录请求
+		if ((can_id_request >= 0)
+    || (can_master_request >= 0)
+    || setup_save_pending)                             //同时承接串口设置命令的保存请求
+   {
     HAL_StatusTypeDef status;                          //保存解锁、擦除和写入结果
     HAL_StatusTypeDef close_status;                    //单独保存Flash上锁结果
 
@@ -306,12 +486,12 @@ BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
         Error_Handler();                              //停止输出失败时，沿用现有错误处理
     }
 
-    state = REST_MODE;                                //保存期间退出电机模式
+    state = setup_save_pending ? SETUP_MODE : REST_MODE;    //串口设置继续留在SETUP，CAN设置沿用REST                                //保存期间退出电机模式
     can_mode_request = -1;                            //清除保存前遗留的模式切换请求
     command = (FocCommand){0};                         //清零原有控制命令
     reset_foc(&controller);                           //清除电流参考和控制器积分等运行状态
 
-    if (can_id_request >= 0)
+    if (can_id_request >= 0)                            //收到CAN修改ID请求时才使用该请求值
     {
         motor_parameters.CAN_ID = can_id_request;      //把待设置的本机ID写入RAM参数
     }
@@ -337,7 +517,8 @@ BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
 
     PreferenceWriter_Load(&motor_parameters);         //保存成功后，沿用原工程重新加载参数
 
-    if (can_id_request >= 0)
+    if ((can_id_request >= 0)
+        || (setup_save_pending && cmd_id == 'i'))       //CAN或串口修改本机ID后，同步更新过滤器
     {
         if (BSP_CAN_SetFilter((uint16_t)motor_parameters.CAN_ID) != HAL_OK)
         {
@@ -347,6 +528,12 @@ BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
 
     can_id_request = -1;                              //清除已处理的本机ID请求，避免重复擦写
     can_master_request = -1;                          //清除已处理的主站ID请求，避免重复擦写
+		
+		if (setup_save_pending)
+{
+    setup_save_pending = 0;                            //清除已完成的保存请求
+    enter_setup_state();                               //沿用原工程，保存后重新显示设置菜单
+}
 
     __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);     //恢复周期中断前清除更新标志
 
@@ -354,7 +541,104 @@ BSP_DebugUart_TryWrite("BOOT OK ERR=0\r\n");
     {
         Error_Handler();                              //恢复失败时，沿用现有错误处理
     }
-}
+   }
+	 if ((can_mode_request == REST_MODE)
+       || (can_mode_request == CALIBRATION_MODE)        //接入现有串口c命令的标定请求
+       || (can_mode_request == MOTOR_MODE)
+       || (can_mode_request == SETUP_MODE)
+       || (can_mode_request == ENCODER_MODE))            //接入原工程的编码器显示模式
+  {
+    int next_state = can_mode_request;                   //取出本次请求的目标模式
+    can_mode_request = -1;                              //清除已取出的请求
+
+    if ((next_state != state) || (next_state == REST_MODE))
+    {
+        if (BSP_EmergencyStop_IsActive())                //沿用现有急停锁存，禁止重新启动已关断的定时器
+        {
+            Error_Handler();                            //进入工程现有错误处理
+        }
+
+        if (PWM_Stop() != HAL_OK)                        //先进入COAST，并停止PWM和TIM1更新中断
+        {
+            Error_Handler();                            //停止失败时沿用现有错误处理
+        }
+
+        state = REST_MODE;                              //切换准备期间保持停止模式
+        command = (FocCommand){0};                      //清除上一次运行留下的控制命令
+        reset_foc(&controller);                         //复位电流参考和控制器运行状态
+        controller.timeout = 0U;                        //重新开始累计CAN超时周期
+
+        if (next_state == MOTOR_MODE)
+        {
+            if ((PWM_Start() != HAL_OK)
+                || BSP_EmergencyStop_IsActive())         //启动PWM，并承接启动期间已有的急停处理
+            {
+                Error_Handler();                        //启动失败时沿用现有错误处理
+            }
+
+            state = MOTOR_MODE;                         //启动成功后，允许控制中断执行FOC
+        }
+        else
+    {
+    state = next_state;                                //进入请求的非电机模式
+
+    if (state == SETUP_MODE)
+    {
+        enter_setup_state();                           //TIM1采样中断停止期间执行设置入口
+    }
+
+    if (state == CALIBRATION_MODE)
+    {
+        HAL_StatusTypeDef status;
+        HAL_StatusTypeDef close_status;
+
+        if ((PWM_Start() != HAL_OK) || BSP_EmergencyStop_IsActive())
+        {
+            Error_Handler();                            //沿用现有PWM启动和急停处理
+        }
+
+        order_phases(&position_sample, &controller, &motor_parameters);
+        if (BSP_EmergencyStop_IsActive())
+        {
+            Error_Handler();                            //承接现有采样中断触发的关断
+        }
+
+        calibrate_encoder(&position_sample, &motor_parameters); //在主循环顺序完成正反扫描、偏置和LUT计算
+        if ((PWM_Stop() != HAL_OK) || BSP_EmergencyStop_IsActive())
+        {
+            Error_Handler();                            //保存前进入COAST并停止PWM和TIM1更新中断
+        }
+        reset_foc(&controller);
+
+        status = FlashWriter_Open();                    //复用阶段8已有的参数保存接口
+        if (status == HAL_OK)
+        {
+            status = PreferenceWriter_Flush(&motor_parameters);
+        }
+        close_status = FlashWriter_Close();             //保存后恢复Flash上锁
+        if ((status != HAL_OK) || (close_status != HAL_OK))
+        {
+            Error_Handler();                            //保存失败时沿用现有错误处理
+        }
+
+        HAL_Delay(200U);                                 //保留原工程完成提示前的等待
+        BSP_DebugUart_TryWrite("\r\nCalibration complete. Press 'esc' to return to menu\r\n");
+    }
+
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);       //恢复周期采样前清除更新标志
+
+    if (HAL_TIM_Base_Start_IT(&htim1) != HAL_OK)         //恢复采样，三相PWM继续保持停止
+    {
+        Error_Handler();                               //恢复失败时沿用现有错误处理
+    }
+    }
+    }
+   }
+
+    if (state == ENCODER_MODE)                          //进入编码器模式后周期显示角度
+    {
+        print_encoder();
+    }
   }
   /* USER CODE END 3 */
 }

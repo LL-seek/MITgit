@@ -249,6 +249,20 @@ void TIM1_UP_TIM10_IRQHandler(void)
     input.adc = adc_sample;                                  //复制本周期ADC快照
     input.position = position_sample;                        //复制本周期位置快照
 	
+	if (state != MOTOR_MODE)                                //非电机模式只更新采样数据
+  {  
+    if (!FOC_SetAdcSnapshot(&controller,
+                           &input.adc,
+                           &motor_parameters)
+        || !input.position.valid)                       //保留当前工程已有的采样失败处理
+    {
+        BSP_EmergencyStop(BSP_ERROR_HAL);                //沿用现有采样失败关断
+        reset_foc(&controller);                         //清除控制运行状态
+    }
+
+    return;                                             //本周期不执行FOC和占空比写入
+  }
+	
 	  if ((state == MOTOR_MODE)&& (motor_parameters.CAN_TIMEOUT > 0) && (controller.timeout > (uint32_t)motor_parameters.CAN_TIMEOUT))
     {
         controller.i_d_ref = 0.0f;     //沿用原工程，清零d轴电流参考，A

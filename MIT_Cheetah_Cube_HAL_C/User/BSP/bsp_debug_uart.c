@@ -66,11 +66,32 @@ bool BSP_DebugUart_TryWrite(const char *text)             //尝试通过 USART2 非阻
     return true;                                         //UART 已接受本次发送任务
 }
 
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)   //UART 发送完成回调函数
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)    //串口接收完成后，将字符写入现有缓冲区
 {
-    if (huart == &huart2)                                //检查完成发送的是否为 USART2
+    if (huart == &huart2)                                //处理USART2接收完成通知
     {
-        s_tx_busy = false;                               //发送完成，恢复 UART 空闲状态
+        uint16_t next = (uint16_t)((s_rx_write + 1U)
+                                  % BSP_DEBUG_UART_RX_CAPACITY); //计算下一个写入位置
+
+        if (next != s_rx_read)                           //缓冲区还有空位
+        {
+            s_rx_buffer[s_rx_write] = s_rx_byte;         //保存本次收到的字符
+            s_rx_write = next;                           //更新写入位置
+        }
+        else
+        {
+            s_rx_overflow = true;                        //沿用已有标志，记录输入丢失
+        }
+
+        (void)HAL_UART_Receive_IT(huart, &s_rx_byte, 1U); //继续接收下一个字符
+    }
+}
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)   //串口发送完成后恢复发送状态
+{
+    if (huart == &huart2)                               //处理USART2发送完成通知
+    {
+        s_tx_busy = false;                              //允许后续发送菜单和其他信息
     }
 }
 
